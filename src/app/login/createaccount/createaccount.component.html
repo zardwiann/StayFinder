@@ -1,0 +1,103 @@
+<section class="vh-100"
+    style="background: url('https://images.pexels.com/photos/1546166/pexels-photo-1546166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');background-size: cover;">
+    <div class="container py-5 h-100">
+        <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                <div class="card-body p-4 p-lg-5 text-black">
+                                    <div class="form-group">
+                                        <label class="fs-1 ">Create Account</label>
+                                        <label class="fs-5">Select User Type</label>
+                                        <div>
+                                            <input type="radio" id="owner" formControlName="role" value="1"
+                                                (change)="onUserTypeChange('owner')" /> Owner
+                                            <input type="radio" id="guest" formControlName="role" value="2"
+                                                (change)="onUserTypeChange('guest')" /> Guest
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="fullName">Full Name</label>
+                                        <input type="text" class="form-control" formControlName="fullname"
+                                            placeholder="Enter your full name" required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" class="form-control" formControlName="username"
+                                            placeholder="Enter your email" required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="text" class="form-control" formControlName="phone"
+                                            placeholder="Enter your phone number" required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" formControlName="password"
+                                            placeholder="Enter your password" required />
+                                    </div>
+                                    <div class="row">
+                                        <button type="submit" class="btn btn-primary mt-2">Sign Up</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+
+                                    <div *ngIf="role === 'owner'" class="mt-4">
+                                        <label class="fw-bold">Owner</label>
+                                        <div class="form-group">
+                                            <label for="boardingHouseName">Boarding House Name</label>
+                                            <input type="text" class="form-control" formControlName="housename"
+                                                placeholder="Enter your boarding house name" />
+                                        </div>
+
+                                        <div class="autocomplete-container" style="position: relative;">
+                                            <input type="text" [(ngModel)]="query" (input)="searchPlaces()"
+                                                formControlName="address" placeholder="Type a place name"
+                                                class="form-control" autocomplete="off" />
+                                            <div *ngIf="places.length > 0" class="dropdown"
+                                                style="position: absolute; z-index: 1000; background: white; border: 1px solid #ccc; width: 100%;">
+                                                <div *ngFor="let place of places" (click)="selectPlace(place)"
+                                                    class="dropdown-item" style="padding: 8px; cursor: pointer;">
+                                                    {{ place.display_name }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="roomsAvailable">Available Rooms</label>
+                                            <input type="number" class="form-control" formControlName="room"
+                                                placeholder="Number of available rooms" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="priceRange">Price Range</label>
+                                            <input type="text" class="form-control" formControlName="price"
+                                                placeholder="Enter your room price range" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="amenities">Amenities (Optional)</label>
+                                            <textarea class="form-control" formControlName="amenities"
+                                                placeholder="List amenities (Wi-Fi, AC, etc.)"></textarea>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,95 @@
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+
+    <a class="navbar-brand ps-3" href="/main">BH MAP LOCATOR</a>
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+            class="fas fa-bars"></i></button>
+    <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group">
+        </div>
+    </form>
+    <!-- Navbar-->
+
+</nav>
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading"></div>
+                    <a class="nav-link" routerLink="dashboard">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Dashboard
+                    </a>
+                    <div class="sb-sidenav-menu-heading"></div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
+                        *ngIf="isUserAdmin" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        User Management
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" routerLink="user">List of User</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#bhmanagement"
+                        *ngIf="isUserAdmin" aria-expanded="false" aria-controls="bhmanagement">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        BH Management
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="bhmanagement" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" routerLink="user">List Boarding Houses</a>
+                            <a class="nav-link" routerLink="user">Approve/Reject Listings</a>
+                            <a class="nav-link" routerLink="user">Map View</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                        *ngIf="isUserOwner" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Managed Houses
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <a class="nav-link" routerLink="boardinghouse">List  Owned House</a>
+                            <a class="nav-link" routerLink="boardinghouse">List of Boarders</a>
+                            <a class="nav-link" routerLink="submission">Submission</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                        data-bs-target="#collapseReservation" aria-expanded="false" aria-controls="collapseReservation" *ngIf="isUserOwner" >
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                       Booking / Inquiries
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseReservation" aria-labelledby="headingTwo"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <a class="nav-link" routerLink="boardinghouse">View Booking</a>
+                            <a class="nav-link" routerLink="boardinghouse">Manage Inquiries</a>
+                        </nav>
+                    </div>
+                   
+                    <a class="nav-link" routerLink="login" (click)="logout()">
+                        <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                        Log Out
+                    </a>
+
+                </div>
+            </div>
+
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+        <router-outlet></router-outlet>
+        <footer class="py-4 bg-light mt-auto">
+        </footer>
+    </div>
+</div>
