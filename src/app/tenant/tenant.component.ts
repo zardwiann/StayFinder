@@ -55,7 +55,7 @@ export class TenantComponent {
   ViewBoardingHouseDetails(id: any) {
     this.public_service.SelectBoardingHouse(id).subscribe(data => {
       this.owner_data = data[0];
-      console.log(this.owner_data);
+     
       this.dialog.open(BoardingDetailsComponent, {
         width: '600px',
         height: '700px',
@@ -87,7 +87,7 @@ export class TenantComponent {
   BookingForm(id: any) {
     this.public_service.SelectBoardingHouse(id).subscribe(data => {
       this.owner_data = data[0];
-      console.log(this.owner_data);
+      
       this.dialog.open(BookingformComponent, {
         width: '700px',
         data: {
