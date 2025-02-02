@@ -37,20 +37,14 @@ export class LoginComponent {
       .pipe(take(1))
       .subscribe(
         (response) => {
-          
           if (response?.success && response?.user?.id) {
-            sessionStorage.setItem('userRole', response.user.role); 
-            const role = response.user.role;
-            if (role === 0) {
-              this.router.navigate(['/main']);
-            } else if (role === 1) {
-              this.router.navigate(['/main']);
-            } else if (role === 2) {
-              console.log('guest')
-            }
+            // Store user details in sessionStorage
+            sessionStorage.setItem('userId', response.user.id);
+            sessionStorage.setItem('userRole', response.user.role);
+            sessionStorage.setItem('userStatus', response.user.status);
+            this.router.navigate(['/main']);
           } else {
-            console.error('No valid user data received. Debug details:');
-            console.error(response?.message || 'Unknown error');
+            console.error('Invalid user data received:', response?.message || 'No user data available');
           }
         },
         (error) => {
@@ -58,14 +52,6 @@ export class LoginComponent {
         }
       );
   }
-
-
-
-
-
-
-
-
-
+  
 
 }

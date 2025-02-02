@@ -52,8 +52,13 @@ export class LoginserviceService {
       );
   }
 
-  register(data: any): Observable<any> {
-    return this.http.post(this.api.getApi.register, data,{headers: { 'Content-Type': 'application/json' }});
+  createaccount(data: any): Observable<any> {
+    return this.http.post(this.api.getApi.createaccount, data,{headers: { 'Content-Type': 'application/json' }});
   }
+ 
+  addboardinghouse(formData: FormData) {
+    return this.http.post(this.api.getApi.addboardinghouse, formData,{headers: { 'Content-Type': 'application/json' }});
+  }
+ 
 
 }

@@ -1,0 +1,62 @@
+<div class="student-list m-3 col-8 shadow-lg p-3 border border-dark">
+    <div class="rounded">
+        <h2 class="p-4 text-secondary"> <u>Booking/Inquires ||Reservatiion List Table </u></h2>
+    </div>
+    <mat-form-field class="col-md-12" appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+    </mat-form-field>
+    <table mat-table recycleRows matSort [dataSource]="dataSource" id="table" class="m-2 p-2">
+        <ng-container matColumnDef="row">
+            <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">No.</th>
+            <td mat-cell *matCellDef="let i = index " class="text-center"> {{i + 1}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="fullname">
+            <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Full Name</th>
+            <td mat-cell *matCellDef="let element" class="text-center">{{element.fullname}}</td>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Phone</th>
+            <td mat-cell *matCellDef="let element" class="text-center">{{element.phone}}</td>
+        </ng-container>
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Address</th>
+            <td mat-cell *matCellDef="let element" class="text-center">{{element.address}}</td>
+           
+        </ng-container>
+        <ng-container matColumnDef="boardinghousename">
+            <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Boarding House</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.boardingid}}
+            </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Time of Booking</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.time}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">View</th>
+            <td mat-cell *matCellDef="let element" class="text-center">
+                <button class="btn btn-outline-primary mx-2">
+                    Details
+                </button>
+                <button class="btn btn-outline-success mx-2">
+                    Map
+                </button>
+
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[ 5, 10, 100]">
+    </mat-paginator>
+
+</div>

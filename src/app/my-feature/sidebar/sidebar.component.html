@@ -44,9 +44,9 @@
                     <div class="collapse" id="bhmanagement" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" routerLink="user">List Boarding Houses</a>
-                            <a class="nav-link" routerLink="user">Approve/Reject Listings</a>
-                            <a class="nav-link" routerLink="user">Map View</a>
+                            <a class="nav-link" routerLink="approvelist">List Boarding Houses</a>
+                            <a class="nav-link" routerLink="boardinghouse">Approve/Reject Listings</a>
+                            <!-- <a class="nav-link" routerLink="user">Map View</a> -->
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
@@ -58,9 +58,8 @@
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link" routerLink="boardinghouse">List  Owned House</a>
-                            <a class="nav-link" routerLink="boardinghouse">List of Boarders</a>
-                            <a class="nav-link" routerLink="submission">Submission</a>
+                            <a class="nav-link" routerLink="ownedboardinghouse">List  Owned House</a>
+                             
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -72,8 +71,8 @@
                     <div class="collapse" id="collapseReservation" aria-labelledby="headingTwo"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link" routerLink="boardinghouse">View Booking</a>
-                            <a class="nav-link" routerLink="boardinghouse">Manage Inquiries</a>
+                            <a class="nav-link" routerLink="booking">View Booking</a>
+                            <!-- <a class="nav-link" routerLink="boardinghouse">Manage Inquiries</a> -->
                         </nav>
                     </div>
                    
@@ -89,7 +88,7 @@
     </div>
     <div id="layoutSidenav_content">
         <router-outlet></router-outlet>
-        <footer class="py-4 bg-light mt-auto">
+        <footer class="py-4  mt-auto">
         </footer>
     </div>
 </div>

@@ -1,0 +1,47 @@
+<div class="container my-5">
+    <h1 class="text-center mb-4">Boarding House Details</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="text-center">
+                <img [src]="'http://localhost/bhml/uploads/' + data.comp.picture" alt="Boarding House Image"
+                    class="img-fluid" width="300px" height="300px">
+            </div>
+
+            <h2 class="card-title text-primary mt-3">{{data.comp.housename}}</h2>
+            <p><strong>Location:</strong> {{data.comp.houseaddress}}, Sindangan Zamboanga Del Norte</p>
+
+            <p><strong>Room Available:</strong></p>
+            <ul>
+                <li>{{data.comp.room}}</li>
+            </ul>
+
+            <p><strong>Price:</strong></p>
+            <ul>
+                <li>{{data.comp.price}}</li>
+            </ul>
+
+            <p><strong>Facilities:</strong> {{data.comp.amenities}}</p>
+        </div>
+    </div>
+
+    <h1 class="text-center mb-4">Owner Details</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title text-primary">{{data.comp.fullname}}</h2>
+            <p><strong>Address:</strong> {{data.comp.owneraddress}}</p>
+            <p>The owner is dedicated to providing excellent service and support during your stay.</p>
+
+            <p><strong>Phone:</strong></p>
+            <ul>
+                <li>{{data.comp.phone}}</li>
+            </ul>
+            <p>For inquiries or bookings, feel free to call the owner for assistance.</p>
+
+            <p><strong>Username:</strong></p>
+            <ul>
+                <li>{{data.comp.username}}</li>
+            </ul>
+            <p>Use this contact for online bookings or communication with the owner.</p>
+        </div>
+    </div>
+</div>

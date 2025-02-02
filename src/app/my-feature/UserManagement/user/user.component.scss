@@ -1,0 +1,36 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.custom-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.custom-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.house-image {
+    border-radius: 12px;
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+    transition: transform 0.3s;
+}
+
+.house-image:hover {
+    transform: scale(1.05);
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.list-unstyled li {
+    background: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}

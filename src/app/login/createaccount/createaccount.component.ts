@@ -17,6 +17,7 @@ export class CreateaccountComponent {
   role: string = '';
   query: string = '';
   places: any[] = [];
+  place: any
 
 
   constructor(
@@ -36,81 +37,79 @@ export class CreateaccountComponent {
 
   formValidation() {
     this.angForm = this.fb.group({
-      role: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required],
       fullname: ['', Validators.required],
       phone: ['', Validators.required],
-      housename: ['', Validators.required],
       address: ['', Validators.required],
-      room: ['', Validators.required],
-      price: ['', Validators.required],
-      amenities: ['', Validators.required]
+
     });
-
-
   }
 
 
 
 
 
-  searchPlaces() {
-    if (!this.query) {
-      this.places = [];
-      return;
-    }
+  // searchPlaces() {
+  //   if (!this.query) {
+  //     this.places = [];
+  //     return;
+  //   }
+  //   const url = `http://localhost/bhml/location.php/search?q=${encodeURIComponent(this.query)}&format=json&addressdetails=1`;
+  //   this.http
+  //     .get<any[]>(url)
+  //     .pipe(
+  //       catchError((error) => {
+  //         console.error('Error fetching places:', error);
+  //         return of([]);
+  //       })
+  //     )
+  //     .subscribe((data) => {
+  //       this.places = data.map((place) => ({
+  //         display_name: `${place.address}`,
+  //         lat: place.latitude,
+  //         lon: place.longitude,
+  //       }));
+  //     });
+  // }
 
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(this.query)}&format=json&addressdetails=1`;
-
-    this.http
-      .get<any[]>(url)
-      .pipe(
-        catchError((error) => {
-          console.error('Error fetching places:', error);
-          return of([]);
-        })
-      )
-      .subscribe((data) => {
-        this.places = data.map((place) => ({
-          display_name: `${place.address.village || place.address.hamlet || place.address.suburb || 'Unknown Barangay'}, ${place.display_name}`,
-          lat: place.lat,
-          lon: place.lon,
-        }));
-      });
-  }
-
-
-  selectPlace(place: any) {
-    console.log(`Selected Place: ${place.display_name}`);
-    console.log(`Latitude: ${place.lat}, Longitude: ${place.lon}`);
-    this.query = place.display_name;
-    this.angForm.patchValue({
-      boardingHouseAddress: place.display_name,
-    });
-    this.places = [];
-  }
-
-
-  onUserTypeChange(type: string): void {
-    this.role = type;  
-    
-  }
+  // selectPlace(place: any) {
+  //   console.log(`Selected Place: ${place.display_name}`);
+  //   console.log(`Latitude: ${place.lat}, Longitude: ${place.lon}`);
+  //   this.query = place.display_name;
+  //   this.angForm.patchValue({
+  //     address: place.display_name,
+  //     latitude: place.lat,
+  //     longitude: place.lon,
+  //   });
+  //   this.places = [];
+  // }
 
 
   postdata(angForm1: any): void {
 
-    if (angForm1.status === "INVALID") { return }
-    this.authservice.register(angForm1.value).subscribe({
+    if (angForm1.status === "INVALID") {
+      return;
+    }
+    const formData = {
+      ...angForm1.value,
+      status: '0',
+      role: '1',
+    };
+
+    this.authservice.createaccount(formData).subscribe({
       next: (data) => {
+        alert('You successfully created and ACCOUNT')
         console.log(data)
-      }, error: (err: any) => {
+      },
+      error: (err: any) => {
+        console.error('Error saving data:', err);
 
-        console.log(err)
-      }
 
-    })
+      },
+    });
   }
+
 
 
 

@@ -12,6 +12,7 @@ export class Usermodule {
     public latitude: string;
     public longitude: string;
     public role: string;
+    public status:string;
 
 
 
@@ -29,6 +30,7 @@ export class Usermodule {
         latitude: string,
         longitude: string,
         role: string,
+        status:string
 
 
     ) {
@@ -45,6 +47,7 @@ export class Usermodule {
         this.latitude = latitude;
         this.longitude = longitude;
         this.role = role;
+        this.status = status;
 
 
     }

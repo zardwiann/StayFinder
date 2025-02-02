@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Approve of Reject </h2>
+<mat-dialog-content>
+  <form [formGroup]="statusForm" (ngSubmit)="updateStatus()">
+    <mat-form-field appearance="outline">
+      <mat-label>Select Option</mat-label>
+      <mat-select formControlName="status">
+        <mat-label>Toppings</mat-label>
+        <mat-option value="0">Pending</mat-option>
+        <mat-option value="2">Approved</mat-option>
+       
+      </mat-select>
+    </mat-form-field>
+   
+    <div *ngIf="statusForm.get('status')?.invalid && statusForm.get('status')?.touched">
+      <small class="error">Status is required.</small>
+    </div>
+    <mat-dialog-actions>
+       <button class="btn btn-primary mx-2"[disabled]="statusForm.invalid">OK</button>
+      <button class="btn btn-danger" [mat-dialog-close]>Cancel</button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>
+
+

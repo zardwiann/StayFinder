@@ -9,12 +9,31 @@ import { BASE_PATH } from "./api-url-config";
 export class Api {
 
 
-  
+
     getApi: any = {
         // login api
         login: `${BASE_PATH}login.php`,
-        register: `${BASE_PATH}register.php `
+        register: `${BASE_PATH}register.php `,
+        createaccount: `${BASE_PATH}createaccount.php `,
 
+        // dashboard
 
+        user_role: `${BASE_PATH}user_role.php `,
+        boardinghouselist: `${BASE_PATH}boardinghouselist.php `,
+        ownerrecord: `${BASE_PATH}ownerrecord.php `,
+        selecttheOwner: `${BASE_PATH}selectOwner.php`,
+        updatestatus: `${BASE_PATH}updatestatus.php`,
+        addboardinghouse: `${BASE_PATH}addboardinghouse.php `,
+        selectboarding: `${BASE_PATH}selectboarding.php `,
+
+        userlist: `${BASE_PATH}userlist.php `,
+        boardinghouseownerlist: `${BASE_PATH}boardinghouseownerlist.php `,
+
+        addbooking: `${BASE_PATH}addbooking.php`,
+
+        bookinglist:`${BASE_PATH}bookinglist.php`,
+
+        mapview:`${BASE_PATH}mapview.php`,
+        get_image:`${BASE_PATH}get_image.php`
     }
 }
