@@ -31,9 +31,13 @@ export class Api {
 
         addbooking: `${BASE_PATH}addbooking.php`,
 
-        bookinglist:`${BASE_PATH}bookinglist.php`,
+        bookinglist: `${BASE_PATH}bookinglist.php`,
 
-        mapview:`${BASE_PATH}mapview.php`,
-        get_image:`${BASE_PATH}get_image.php`
+        mapview: `${BASE_PATH}mapview.php`,
+        get_image: `${BASE_PATH}get_image.php`,
+        updateboardinghouse:`${BASE_PATH}updateboardinghouse.php`,
+
+        SelectBoardinghouse:`${BASE_PATH}SelectBoardinghouse.php`,
+        deleteownerboarding: `${BASE_PATH}deleteownerboarding.php`,
     }
 }

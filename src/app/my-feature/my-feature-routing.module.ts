@@ -9,6 +9,7 @@ import { BoardinghousemapComponent } from './BoardingHouse/boardinghousemap/boar
 import { OwnedboardinghouseComponent } from './OwnerManagement/ownedboardinghouse/ownedboardinghouse.component';
 import { BookingComponent } from './ReservationPage/booking/booking.component';
 import { MapComponent } from '../Map/map/map.component';
+import { DeclinebhComponent } from './BoardingHouse/declinebh/declinebh.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'user', component: ListUserComponent },
       { path: 'boardinghouse', component: ListBoardinghouseComponent },
       { path: 'approvelist', component: BoardinghousemapComponent },
+      { path: 'declinelist', component: DeclinebhComponent },
 
       { path: 'submission', component: SubmissionComponent },
       { path: 'ownedboardinghouse', component: OwnedboardinghouseComponent },

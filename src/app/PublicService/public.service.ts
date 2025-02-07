@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Api } from '../API/api';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { API_HEADERS_CONFIG } from '../API/api-header.service';
 
 @Injectable({
@@ -37,7 +37,7 @@ export class PublicService {
   fetchOwner() {
     return this.http.get<any>(this.api.getApi.user_role);
   }
-  boardinghouselist(){
+  boardinghouselist() {
     return this.http.get<any>(this.api.getApi.boardinghouselist);
   }
   owner(): Observable<any> {
@@ -56,31 +56,47 @@ export class PublicService {
     });
   }
 
-  SelectBoardingHouse(id:any):Observable<any>{
+  SelectBoardingHouse(id: any): Observable<any> {
     const myFormData = new FormData();
     myFormData.append('id', id);
-    return this.http.post<any>(this.api.getApi.selectboarding, myFormData, {
+    return this.http.post<any>(this.api.getApi.SelectBoardinghouse, myFormData, {
     });
   }
 
-   
+
   ApproveOwner(payload: any, id: any) {
     return this.http.post<any>(this.api.getApi.updatestatus, payload, API_HEADERS_CONFIG)
   }
- 
 
-  addbooking(data: any,boardingid:any,ownerid:any): Observable<any> {
-    return this.http.post(this.api.getApi.addbooking, data,{headers: { 'Content-Type': 'application/json' }});
+
+  addbooking(data: any, boardingid: any, ownerid: any): Observable<any> {
+    return this.http.post(this.api.getApi.addbooking, data, { headers: { 'Content-Type': 'application/json' } });
   }
   UpdateStatus(payload: any) {
     return this.http.post<any>(this.api.getApi.updatestatus, payload, API_HEADERS_CONFIG)
   }
-  BoardingHouseOwnerList(id:any){ 
+  BoardingHouseOwnerList(id: any) {
     const myFormData = new FormData();
     myFormData.append('id', id);
     return this.http.post<any>(this.api.getApi.boardinghouseownerlist, myFormData, {
     });
-     
+
   }
+
+  deleteownerboarding(id: any): Observable<any> {
+    var myFormData = new FormData();
+    myFormData.append('id', id)
+    return this.http.post<any>(this.api.getApi.deleteownerboarding, myFormData)
+  }
+
+ 
+
+  SelectBoardinghouse(id: any) {
+    var myFormData = new FormData();
+    myFormData.append('id', id);
+    return this.http.post<any>(this.api.getApi.SelectBoardinghouse, myFormData)
+
+  }
+
 
 }

@@ -44,8 +44,10 @@
                     <div class="collapse" id="bhmanagement" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" routerLink="approvelist">List Boarding Houses</a>
-                            <a class="nav-link" routerLink="boardinghouse">Approve/Reject Listings</a>
+                            <a class="nav-link" routerLink="approvelist">Approve Boarding House</a>
+
+                            <a class="nav-link" routerLink="boardinghouse">Pending Approval</a>
+                            <a class="nav-link" routerLink="declinelist">Decline List</a>
                             <!-- <a class="nav-link" routerLink="user">Map View</a> -->
                         </nav>
                     </div>
@@ -58,14 +60,15 @@
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link" routerLink="ownedboardinghouse">List  Owned House</a>
-                             
+                            <a class="nav-link" routerLink="ownedboardinghouse">List Owned House</a>
+
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#collapseReservation" aria-expanded="false" aria-controls="collapseReservation" *ngIf="isUserOwner" >
+                        data-bs-target="#collapseReservation" aria-expanded="false" aria-controls="collapseReservation"
+                        *ngIf="isUserOwner">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                       Booking / Inquiries
+                        Booking / Inquiries
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseReservation" aria-labelledby="headingTwo"
@@ -75,7 +78,7 @@
                             <!-- <a class="nav-link" routerLink="boardinghouse">Manage Inquiries</a> -->
                         </nav>
                     </div>
-                   
+
                     <a class="nav-link" routerLink="login" (click)="logout()">
                         <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                         Log Out

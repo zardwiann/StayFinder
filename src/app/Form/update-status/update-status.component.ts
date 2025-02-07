@@ -11,15 +11,15 @@ import { PublicService } from 'src/app/PublicService/public.service';
   styleUrls: ['./update-status.component.scss']
 })
 export class UpdateStatusComponent {
-  statusForm: FormGroup;
+  statusForm: any = FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<UpdateStatusComponent>,
     private publicService: PublicService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-
+  ) { }
+  ngOnInit() {
     this.statusForm = this.fb.group({
       status: [this.data.comp?.status || '1', Validators.required]
     });
@@ -27,19 +27,20 @@ export class UpdateStatusComponent {
 
   updateStatus() {
     if (this.statusForm.valid) {
-
-      this.statusForm.patchValue({ status: '2' });
+      const selectedStatus = this.statusForm.value.status;  
+  
       const payload = {
-        id: this.data.comp.id,
-        status: this.statusForm.value.status
+        id: this.data.comp.id, 
+        status: selectedStatus  
       };
-      console.log('Payload:', payload);
-
+  
+      console.log('Payload:', payload);  
+  
       this.publicService.UpdateStatus(payload)
         .subscribe(
           (response) => {
             console.log('Status updated successfully', response);
-            this.dialogRef.close(true);
+            this.dialogRef.close(true);  
           },
           (error) => {
             console.log('Error updating status', error);
@@ -48,6 +49,7 @@ export class UpdateStatusComponent {
     } else {
       console.log('Form is invalid');
     }
-
   }
+  
 }
+

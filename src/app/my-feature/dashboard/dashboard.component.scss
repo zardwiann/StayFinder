@@ -1,1 +1,79 @@
- 
+/* Role Section */
+.role-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.role-box {
+    width: 60%;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(11, 11, 11);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.role-box:hover {
+    transform: scale(1.05);
+}
+
+.admin-box {
+    background: linear-gradient(135deg, #ff6b6b, #ff8787);
+}
+
+.owner-box {
+    background: linear-gradient(135deg, #6bc5ff, #87d3ff);
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.admin-card {
+    background: linear-gradient(135deg, #ff6b6b, #ff8787);
+}
+
+.owner-card {
+    background: linear-gradient(135deg, #6bc5ff, #87d3ff);
+}
+
+/* Card Footer */
+.card-footer {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Map Section */
+.map-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

@@ -24,6 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookingComponent } from './ReservationPage/booking/booking.component';
 import { MapComponent } from '../Map/map/map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { DeclinebhComponent } from './BoardingHouse/declinebh/declinebh.component';
+
 @NgModule({
   declarations: [
 
@@ -38,7 +40,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     OwnedboardinghouseComponent,
     AddboardinghouseComponent,
     BookingComponent,
-    MapComponent
+    MapComponent,
+    DeclinebhComponent
 
 
 
@@ -56,7 +59,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
 
   exports: [

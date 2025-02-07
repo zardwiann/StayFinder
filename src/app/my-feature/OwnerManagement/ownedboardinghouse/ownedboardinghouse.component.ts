@@ -8,6 +8,9 @@ import { PublicService } from 'src/app/PublicService/public.service';
 import { LoginserviceService } from 'src/app/User/loginservice.service';
 import { Usermodule } from 'src/app/User/user';
 import { BoardingDetailsComponent } from '../../BoardingHouse/boarding-details/boarding-details.component';
+import { DeletecomponentComponent } from 'src/app/Form/deletecomponent/deletecomponent.component';
+import { finalize, take } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-ownedboardinghouse',
@@ -22,19 +25,17 @@ export class OwnedboardinghouseComponent {
   angForm: any = FormGroup;
   currentusers: any
   owner_house: any
-
+  boardinghouse: any = Usermodule;
+  componetdata: any;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   constructor(
     public public_service: PublicService,
     public dialog: MatDialog,
     public auth: LoginserviceService
-
-
   ) { }
 
   ngOnInit(): void {
-
     this.getOwner();
   }
 
@@ -44,7 +45,7 @@ export class OwnedboardinghouseComponent {
   }
 
   getOwner() {
-    const userId = sessionStorage.getItem('userId'); 
+    const userId = sessionStorage.getItem('userId');
     if (!userId) {
       console.error('No user session found in sessionStorage.');
       return;
@@ -53,7 +54,7 @@ export class OwnedboardinghouseComponent {
       (data: any[]) => {
         this.currentusers = data.filter((s: any) => s.ownerid.toString() === userId);
         this.owner_house = this.currentusers;
-        this.setupDataSource(this.owner_house); 
+        this.setupDataSource(this.owner_house);
       },
       (error) => {
         console.error('Error fetching owner data:', error);
@@ -70,10 +71,9 @@ export class OwnedboardinghouseComponent {
   ViewBoardingHouseDetails(id: any) {
     this.public_service.SelectBoardingHouse(id).subscribe(data => {
       this.owner_data = data[0];
-      
       this.dialog.open(BoardingDetailsComponent, {
         width: '700px',
-        height:'700px',
+        height: '700px',
         data: {
           comp: {
             id: this.owner_data.register_id,
@@ -86,7 +86,7 @@ export class OwnedboardinghouseComponent {
             amenities: this.owner_data.amenities,
             room: this.owner_data.room,
             price: this.owner_data.price,
-            picture:this.owner_data.picture,
+            picture: this.owner_data.picture,
             status: this.owner_data.status || 'Pending',
           }
         }
@@ -97,5 +97,51 @@ export class OwnedboardinghouseComponent {
 
     });
   }
- 
+
+  Delete(id: any): void {
+    const confirmDialog = this.dialog.open(DeletecomponentComponent, {
+      data: {
+        title: 'Confirm Remove ',
+        message: 'Are you sure, you want to remove this data'
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.public_service.deleteownerboarding(id).pipe(
+          take(1),
+          finalize(() => {
+            this.getOwner();
+          })
+        ).subscribe({
+          next: (data) => {
+
+          },
+          error: (error: HttpErrorResponse) => {
+            console.log(error);
+
+          }
+        });
+      }
+    });
+  }
+
+  Update(id: any) {
+    this.public_service.SelectBoardingHouse(id)
+      .subscribe(data => {
+        this.boardinghouse = data[0]
+        console.log(this.boardinghouse)
+
+      })
+  }
+  Addboarding() {
+    this.dialog.open(AddboardinghouseComponent, {
+      width: '500px',
+      height: '700px'
+    }).afterClosed().subscribe(result => {
+       this.getOwner();
+    })
+  }
+
+
+
 }

@@ -13,22 +13,18 @@ import { Api } from 'src/app/API/api';
   styleUrls: ['./addboardinghouse.component.scss']
 })
 export class AddboardinghouseComponent {
-  form: FormGroup;
+  form: any = FormGroup;
   selectedFile: File | null = null;
-  role: string = '';
+  
   query: string = '';
   places: any[] = [];
   place: any;
-
-
-
-
   searchPlaces() {
     if (!this.query) {
       this.places = [];
       return;
     }
-    const url = `http://localhost/bhml/location.php/search?q=${encodeURIComponent(this.query)}&format=json&addressdetails=1`;
+    const url = `https://boardinghouseapi.masterpiecesolutions.site/location.php/search?q=${encodeURIComponent(this.query)}&format=json&addressdetails=1`;
     this.http
       .get<any[]>(url)
       .pipe(
@@ -65,22 +61,28 @@ export class AddboardinghouseComponent {
   constructor(
     private http: HttpClient,
     public public_service: PublicService,
-    public api: Api
+    public api: Api,
+    private fb: FormBuilder
 
   ) {
-    this.form = new FormGroup({
-      ownerid: new FormControl(''),
-      housename: new FormControl(''),
-      address: new FormControl(''),
-      room: new FormControl(''),
-      price: new FormControl(''),
-      amenities: new FormControl(''),
-      latitude: new FormControl(''),
-      longitude: new FormControl(''),
-      role: new FormControl(''),
-      status: new FormControl(''),
-      picture: new FormControl('')
+    this.FormValidator()
+  }
+
+  FormValidator() {
+    this.form = this.fb.group({
+      ownerid: ['', Validators.required],
+      housename: ['', Validators.required],
+      address: ['', Validators.required],
+      room: ['', Validators.required],
+      price: ['', Validators.required],
+      amenities: [''],
+      latitude: ['', Validators.required],
+      longitude: ['', Validators.required],
+      role: ['', Validators.required],
+      status: ['', Validators.required],
+      picture: ['']
     });
+
   }
 
   onFileSelected(event: any) {
@@ -104,8 +106,7 @@ export class AddboardinghouseComponent {
     }
     this.http.post(this.api.getApi.addboardinghouse, formData).subscribe(
       (response) => {
-        alert("Data Saved Successfully")
-        window.location.reload();
+        alert("Data Saved Successfully");
         this.formReset();
 
       },

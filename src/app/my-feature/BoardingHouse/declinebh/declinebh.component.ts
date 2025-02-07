@@ -1,19 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { BoardingDetailsComponent } from '../boarding-details/boarding-details.component';
 import { UpdateStatusComponent } from 'src/app/Form/update-status/update-status.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 import { PublicService } from 'src/app/PublicService/public.service';
 import { Usermodule } from 'src/app/User/user';
-import { BoardingDetailsComponent } from '../boarding-details/boarding-details.component';
+import { FormGroup } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-list-boardinghouse',
-  templateUrl: './list-boardinghouse.component.html',
-  styleUrls: ['./list-boardinghouse.component.scss']
+  selector: 'app-declinebh',
+  templateUrl: './declinebh.component.html',
+  styleUrls: ['./declinebh.component.scss']
 })
-export class ListBoardinghouseComponent {
+export class DeclinebhComponent {
   owner: any = []
   displayedColumns: string[] = ['row', 'boardinghousename', 'BoardingHouseAddress', 'room', 'price', 'action']
   dataSource = this.owner;
@@ -42,7 +42,7 @@ export class ListBoardinghouseComponent {
   ListofBoardingHouse() {
     this.public_service.owner().subscribe(
       (data: any[]) => {
-        this.currentusers = data.filter((s: any) => s.status === '0');
+        this.currentusers = data.filter((s: any) => s.status === '1');
         this.owner_house = this.currentusers
         this.setupDataSource(this.owner_house);
       }
@@ -61,7 +61,7 @@ export class ListBoardinghouseComponent {
         width: '400px',
         data: {
           comp: {
-            
+
             id: this.owner_data.register_id,
             fullname: this.owner_data.owner_name,
             owneraddress: this.owner_data.owner_address,
@@ -85,37 +85,34 @@ export class ListBoardinghouseComponent {
   }
 
   ViewBoardingHouseDetails(id: any) {
-      this.public_service.SelectBoardingHouse(id).subscribe(data => {
-        this.owner_data = data[0];
-        // console.log(this.owner_data);
-        this.dialog.open(BoardingDetailsComponent, {
-          width: '700px',
-          height:'700px',
-          data: {
-            comp: {
-              id: this.owner_data.register_id,
-              fullname: this.owner_data.owner_name,
-              owneraddress: this.owner_data.owner_address,
-              housename: this.owner_data.housename,
-              houseaddress: this.owner_data.house_address,
-              phone: this.owner_data.owner_phone,
-              username: this.owner_data.owner_username,
-              amenities: this.owner_data.amenities,
-              room: this.owner_data.room,
-              price: this.owner_data.price,
-              picture:this.owner_data.picture,
-              status: this.owner_data.status || 'Pending',
-            }
+    this.public_service.SelectBoardingHouse(id).subscribe(data => {
+      this.owner_data = data[0];
+      // console.log(this.owner_data);
+      this.dialog.open(BoardingDetailsComponent, {
+        width: '700px',
+        height: '700px',
+        data: {
+          comp: {
+            id: this.owner_data.register_id,
+            fullname: this.owner_data.owner_name,
+            owneraddress: this.owner_data.owner_address,
+            housename: this.owner_data.housename,
+            houseaddress: this.owner_data.house_address,
+            phone: this.owner_data.owner_phone,
+            username: this.owner_data.owner_username,
+            amenities: this.owner_data.amenities,
+            room: this.owner_data.room,
+            price: this.owner_data.price,
+            picture: this.owner_data.picture,
+            status: this.owner_data.status || 'Pending',
           }
-  
-        }).afterClosed().subscribe(result => {
-  
-        });
-  
+        }
+
+      }).afterClosed().subscribe(result => {
+
       });
-    }
 
-
+    });
+  }
 
 }
-

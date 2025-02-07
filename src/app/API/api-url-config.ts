@@ -1,3 +1,3 @@
 
- export const BASE_PATH = "http://localhost/bhml/"
+ export const BASE_PATH = "https://localhost/bhml/"
 

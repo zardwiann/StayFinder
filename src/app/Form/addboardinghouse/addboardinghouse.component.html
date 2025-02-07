@@ -1,10 +1,15 @@
-<section>
+<section class="m-3">
+     <h1>Add Boarding House</h1>
+     <hr>
     <div class="container py-1 h-100">
         <form [formGroup]="form" (ngSubmit)="submitForm()">
             <div class="row d-flex justify-content-center align-items-center h-100">
+
                 <label class="form-label" for="customFile">Upload Picture</label>
+                 <hr>
                 <input type="file" class="form-control" id="customFile" (change)="onFileSelected($event)"
                     formControlName="picture" />
+                    <hr>
                 <div class="mt-4">
                     <div class="form-group">
                         <label for="boardingHouseName">Boarding House Name</label>
@@ -50,8 +55,9 @@
                 </div>
 
             </div>
-            <div class="row">
-                <button type="submit" class="btn btn-primary mt-2">Add</button>
+            <div class=" ">
+                <button type="submit" class="btn btn-primary mt-2 col-4 mx-2">Add</button>
+                <button  mat-dialog-close class="btn btn-danger mt-2  col-4 ">Close</button>
             </div>
 
         </form>

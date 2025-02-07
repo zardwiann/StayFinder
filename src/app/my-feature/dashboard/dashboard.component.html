@@ -1,77 +1,80 @@
 <section>
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Dashboard</h1>
-            <hr>
-            <div class="row">
-
-                <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
-                    <div class="card  border-0 text-dark mb-4 shadow-lg">
-                        <div class="card-body">Total Of Owner</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <h1 class="text-center">{{Owner}}</h1>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-dark stretched-link" href="#">View Details</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
-                    <div class="card  border-0 text-dark mb-4 shadow-lg">
-                        <div class="card-body">Total of Boarding House</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <h1 class="text-center">{{BoardingHouse}}</h1>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-dark stretched-link" href="#">View Details</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                    </div>
+            
+            <div class="role-container">
+                <div *ngIf="isUserAdmin" class="role-box admin-box">
+                    <h2>Welcome, Admin!</h2>
+                    <p>You can manage all listings here.</p>
                 </div>
 
-
-                <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
-                    <div class="card  border-0 text-dark mb-4 shadow-lg">
-                        <div class="card-body">Total Of Reservation</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <h1 class="text-center">{{Reservation}}</h1>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-dark stretched-link" href="#">View Details</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                    </div>
+                <div *ngIf="isUserOwner" class="role-box owner-box">
+                    <h2>Welcome, Owner!</h2>
+                    <p>You can manage your own properties.</p>
                 </div>
-                <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
-                    <div class="card  border-0 text-dark mb-4 shadow-lg">
-                        <div class="card-body">Owned Boarding House</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <h1 class="text-center">{{OwnedBoardingHouse}}</h1>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-dark stretched-link" routerLink="approvelist">View Details</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-            <div class="row" *ngIf="isUserAdmin">
-                <!-- Area -->
-                <div class="col-xl-12">
+            <hr>
 
-                    <h1>Map viewing All Boarding House Locations </h1>
+            <div class="row">
+              
+                <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
+                    <div class="dashboard-card admin-card">
+                        <div class="card-body">
+                            <h5>Total Owners</h5>
+                            <h1>{{Owner}}</h1>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
+                    <div class="dashboard-card admin-card">
+                        <div class="card-body">
+                            <h5>Total Boarding Houses</h5>
+                            <h1>{{BoardingHouse}}</h1>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
+                    <div class="dashboard-card owner-card">
+                        <div class="card-body">
+                            <h5>Total Reservations</h5>
+                            <h1>{{Reservation}}</h1>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
+                    <div class="dashboard-card owner-card">
+                        <div class="card-body">
+                            <h5>Owned Boarding Houses</h5>
+                            <h1>{{OwnedBoardingHouse}}</h1>
+                        </div>
+                        <div class="card-footer">
+                            <a routerLink="approvelist">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+            <div class="row" *ngIf="isUserAdmin">
+                <div class="col-xl-12">
+                    <h1 class="map-title">Map Viewing: All Boarding House Locations</h1>
                     <hr>
                     <app-map></app-map>
-
                 </div>
             </div>
-
         </div>
     </main>
 </section>

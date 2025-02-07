@@ -20,7 +20,10 @@ import { MatInputModule } from '@angular/material/input';
 import { BookingformComponent } from './Form/bookingform/bookingform.component';
 import { MapComponent } from './Map/map/map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { MapdetailsComponent } from './Map/mapdetails/mapdetails.component'
+import { MapdetailsComponent } from './Map/mapdetails/mapdetails.component';
+import { DeletecomponentComponent } from './Form/deletecomponent/deletecomponent.component';
+ 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +31,8 @@ import { MapdetailsComponent } from './Map/mapdetails/mapdetails.component'
     TenantComponent,
     BookingformComponent,
     MapdetailsComponent,
+    DeletecomponentComponent,
+  
     
   
 
@@ -46,6 +51,8 @@ import { MapdetailsComponent } from './Map/mapdetails/mapdetails.component'
     MatPaginatorModule,
     MatTableModule,
     GoogleMapsModule,
+    MatFormFieldModule,
+    MatInputModule,
 
 
     MatIconModule,
