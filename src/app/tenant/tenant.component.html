@@ -1,6 +1,7 @@
 <section>
     <nav class="navbar navbar-light bg-light m-2">
         <a class="navbar-brand p-2" routerLink="/login">Login</a>
+        <img src=".././../assets/img/logo.png" alt=""class="img-fluid"width="100px"height="100px">
     </nav>
 
     <div class="row p-2">
@@ -15,15 +16,18 @@
                     <div class="col-12 mb-4" *ngFor="let element of dataSource.data">
                         <div class="card shadow">
                             <div class="card-body text-center">
-                                <img [src]="'https://boardinghouseapi.masterpiecesolutions.site/uploads/' + element.picture"
-                                     alt="Boarding House Image" class="img-fluid rounded" style="max-height: 150px;">
+                                <div class="image-container">
+                                    <img [src]="'https://boardinghouseapi.masterpiecesolutions.site/uploads/' + element.picture"
+                                        alt="Boarding House Image" width="200" height="200"
+                                        class="rounded-circle styled-img">
+                                </div>
                                 <h5 class="card-title text-primary mt-2">{{ element.housename }}</h5>
                                 <p class="card-text text-muted">
                                     <strong>Address:</strong> {{ element.address }}, Sindangan Zamboanga Del Norte
                                 </p>
                                 <div class="d-flex flex-wrap justify-content-center">
                                     <button class="btn btn-outline-primary m-2"
-                                            (click)="ViewBoardingHouseDetails(element.id)">
+                                        (click)="ViewBoardingHouseDetails(element.id)">
                                         Details
                                     </button>
                                     <button class="btn btn-outline-success m-2" (click)="BookingForm(element.id)">
@@ -48,7 +52,7 @@
                     <span class="text-danger text-decoration-none">(Click the Marker to View the Description)</span>
                 </h1>
                 <hr>
-                <app-mapdetails></app-mapdetails>
+                <app-view-all-location></app-view-all-location>
             </div>
         </div>
     </div>

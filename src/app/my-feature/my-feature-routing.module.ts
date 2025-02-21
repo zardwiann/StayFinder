@@ -3,14 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListUserComponent } from './UserManagement/list-user/list-user.component';
-import { ListBoardinghouseComponent } from './BoardingHouse/list-boardinghouse/list-boardinghouse.component';
-import { SubmissionComponent } from './BoardingHouse/submission/submission.component';
-import { BoardinghousemapComponent } from './BoardingHouse/boardinghousemap/boardinghousemap.component';
+ 
 import { OwnedboardinghouseComponent } from './OwnerManagement/ownedboardinghouse/ownedboardinghouse.component';
-import { BookingComponent } from './ReservationPage/booking/booking.component';
-import { MapComponent } from '../Map/map/map.component';
-import { DeclinebhComponent } from './BoardingHouse/declinebh/declinebh.component';
-
+ 
+ 
+import { MapdetailsComponent } from './mapdetails/mapdetails.component';
+import { ProfileComponent } from './OwnerManagement/profile/profile.component';
+import { ReportComponent } from './OwnerManagement/report/report.component';
+import { RoombookingComponent } from './OwnerManagement/roombooking/roombooking.component';
+import { BoardinghouselistComponent } from './BoardingHouse/boardinghouselist/boardinghouselist.component';
+ 
 const routes: Routes = [
   {
     path: '', component: SidebarComponent,
@@ -18,14 +20,17 @@ const routes: Routes = [
       { path: '', component: DashboardComponent, pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'user', component: ListUserComponent },
-      { path: 'boardinghouse', component: ListBoardinghouseComponent },
-      { path: 'approvelist', component: BoardinghousemapComponent },
-      { path: 'declinelist', component: DeclinebhComponent },
-
-      { path: 'submission', component: SubmissionComponent },
       { path: 'ownedboardinghouse', component: OwnedboardinghouseComponent },
-      { path: 'booking', component: BookingComponent },
-      { path: 'map', component: MapComponent }
+  
+      { path: 'map', component: MapdetailsComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'report', component: ReportComponent },
+      { path: 'roombooking', component: RoombookingComponent },
+      { path: 'boardinghouselist', component: BoardinghouselistComponent },
+
+
+
+   
 
     ]
 

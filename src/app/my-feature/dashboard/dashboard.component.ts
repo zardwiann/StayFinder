@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { take } from 'rxjs';
 import { PublicService } from 'src/app/PublicService/public.service';
 import { LoginserviceService } from 'src/app/User/loginservice.service';
 import { Usermodule } from 'src/app/User/user';
@@ -18,7 +19,14 @@ export class DashboardComponent {
   Guest: any;
   BoardingHouse: any;
   OwnedBoardingHouse: any;
-  Reservation:any;
+  Reservation: any;
+  Owner_name: any;
+  totalbooking: any;
+  Pending: any;
+  Approved: any;
+  Declined: any
+  userID: any
+  userData: any;
 
 
   constructor(
@@ -32,10 +40,13 @@ export class DashboardComponent {
     this.fetchGuest();
     this.fetchBoardingHouse();
     this.fetchOwnedBoardingHouse();
-    this.TotalofReservation()
-
+    this.TotalofReservation();
+    this.DeclineBooking();
+    this.DeclineBoardingHouse();
+    const fullname = sessionStorage.getItem('userFullname');
+    this.Owner_name = fullname ? fullname : "Guest";
+    this.fecthUserData()
   }
-
 
   CHeckuserrole() {
     const role = sessionStorage.getItem('userRole');
@@ -83,7 +94,7 @@ export class DashboardComponent {
   fetchBoardingHouse() {
     this.public_service.boardinghouselist().subscribe({
       next: (data) => {
-        this.BoardingHouse = data.filter((s: any) => s.status === '2').length
+        this.BoardingHouse = data.length
       }
     })
   }
@@ -93,23 +104,75 @@ export class DashboardComponent {
     this.public_service.boardinghouselist().subscribe({
       next: (data) => {
         this.OwnedBoardingHouse = data.filter((s: any) => s.ownerid === userID).length
-       
+
       }
     })
   }
 
-  TotalofReservation(){
+  TotalofReservation() {
     const userID = sessionStorage.getItem('userId')
+    this.public_service.reservationlist().subscribe({
+      next: (data) => {
+        this.Reservation = data.filter((s: any) => s.ownerid === userID).length
+      }
+    })
+  }
+  DeclineBooking() {
+    const userID = sessionStorage.getItem('userId');
     this.public_service.bookinglist().subscribe({
-       next:(data)=>{
-         this.Reservation = data.filter((s:any)=> s.ownerid === userID).length
-       }
+      next: (data) => {
+        if (Array.isArray(data)) {
+          this.Reservation = data.length;
+          this.Pending = data.filter((s: any) => s.ownerid === userID && s.status === '0').length;
+          this.Approved = data.filter((s: any) => s.ownerid === userID && s.status === '2').length;
+          this.Declined = data.filter((s: any) => s.ownerid === userID && s.status === '1').length;
+        } else {
+          // console.error('Error: Expected an array but got', data);
+        }
+      },
+      error: (err) => {
+        // console.error('Error fetching booking list:', err);
+      }
+    });
+  }
+  DeclineBoardingHouse() {
+
+    this.public_service.boardinghouselist().subscribe({
+      next: (data) => {
+        if (Array.isArray(data)) {
+          this.Pending = data.filter((s: any) => s.status === '0').length;
+          this.Approved = data.filter((s: any) => s.status === '2').length;
+          this.Declined = data.filter((s: any) => s.status === '1').length;
+        } else {
+          console.error('Error: Expected an array but got', data);
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching booking list:', err);
+      }
+    });
+  }
+
+  fecthUserData() {
+    const userId = sessionStorage.getItem('userId');
+    this.public_service.get_users({ id: userId }).pipe(take(1)).subscribe({
+      next: (data) => {
+        this.userData = data[0];
+
+      },
+      error(error) {
+        console.log(error)
+      }
     })
   }
 
 
-}
 
+
+
+
+
+}
 
 
 

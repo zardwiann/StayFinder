@@ -1,0 +1,59 @@
+<div class="container-fluid mt-4">
+    <h2 class="boarding-title"> {{userData?.fullname}} Profile</h2>
+    <hr>
+    <div class="container mt-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-5 col-md-6 profile-container p-4 m-2">
+                <h2 class="text-center mb-3">Owner Profile</h2>
+                <form [formGroup]="userForm">
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" [ngModel]="userData?.fullname"
+                            formControlName="fullname">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" [ngModel]="userData?.phone" formControlName="phone">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-control" [ngModel]="userData?.address" formControlName="address">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" [ngModel]="userData?.username"
+                            formControlName="username">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" [ngModel]="userData?.password"
+                            formControlName="password">
+                    </div>
+
+                    <button (click)="UpdateDetails()" class="btn btn-primary w-100">Save Changes</button>
+                </form>
+            </div>
+
+
+            <div class="col-lg-5 col-md-6 profile-container p-4 m-2">
+                <h2 class="text-center mb-3">Profile Preview</h2>
+                <div class="text-center">
+                    <img [src]="'https://boardinghouseapi.masterpiecesolutions.site/uploads/' + userData?.picture" alt="Boarding House Image"
+                        width="300" height="300" class="rounded-circle styled-img mb-3">
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text"><strong>Owner:</strong> {{ userData?.fullname }}</p>
+                    <p class="card-text"><strong>Location:</strong> {{ userData?.address }}</p>
+                    <p class="card-text"><strong>Contact:</strong> {{ userData?.phone }}</p>
+                    <p class="card-text"><strong>Email Address:</strong> {{ userData?.username }}</p>
+                </div>
+            </div>
+        </div>
+    </div>

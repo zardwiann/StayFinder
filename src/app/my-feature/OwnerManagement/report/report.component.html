@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="m-3">
+        <h2 class="boarding-title text-center"> Report on your Boarding House Management </h2>
+        <table mat-table recycleRows matSort [dataSource]="dataSource" id="table" class="">
+            <ng-container matColumnDef="row">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">No</th>
+                <td mat-cell *matCellDef="let i = index " class="text-center"> {{i + 1}}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Address</th>
+                <td mat-cell *matCellDef="let element" class="text-center">{{element.address}}</td>
+
+            </ng-container>
+            <ng-container matColumnDef="numberooms">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Rooms Available</th>
+                <td mat-cell *matCellDef="let element" class="text-center">{{element.room}}</td>
+
+            </ng-container>
+          
+          
+            <ng-container matColumnDef="Total">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Total Amount</th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                    {{element.price}}
+
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="boardinghousename">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Boarding House</th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.housename}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="roomtype">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Room Type</th>
+
+                <td mat-cell *matCellDef="let element" class="text-center">
+                    <span class="badge bg-secondary text-dark status-badge" *ngIf="element.status === '0'">
+                        {{element.roomtype}}</span>
+                    <span class="badge bg-secondary text-white status-badge" *ngIf="element.status === '1'">
+                        {{element.roomtype}}</span>
+                    <span class="badge bg-secondary text-white status-badge" *ngIf="element.status === '2'">
+                        {{element.roomtype}}</span>
+                </td>
+
+            </ng-container>
+ 
+
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[ 5, 10, 100]">
+        </mat-paginator>
+    </div>
+
+</div>

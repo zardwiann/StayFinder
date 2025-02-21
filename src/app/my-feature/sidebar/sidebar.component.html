@@ -1,17 +1,32 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand ps-3" href="/main">
+        <img src="../../../assets/img/logo.png" alt="Logo" class="img-fluid" style="max-height: 50px;">
+    </a>
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
 
-    <a class="navbar-brand ps-3" href="/main">BH MAP LOCATOR</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-            class="fas fa-bars"></i></button>
-    <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div class="input-group">
-        </div>
+        <div class="input-group"></div>
     </form>
-    <!-- Navbar-->
 
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link text-white" *ngIf="isUserAdmin">
+                <i class="fas fa-user mx-2"></i> <span id="user-name"> Admin Dashboard</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="isUserOwner">
+        <li class="nav-item">
+            <a class="nav-link text-white" href="#!">
+                <i class="fas fa-user mx-2"></i> <span id="user-name">Owner Dashboard</span>
+            </a>
+        </li>
+    </ul>
 </nav>
+
+
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -44,13 +59,19 @@
                     <div class="collapse" id="bhmanagement" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" routerLink="approvelist">Approve Boarding House</a>
-
-                            <a class="nav-link" routerLink="boardinghouse">Pending Approval</a>
-                            <a class="nav-link" routerLink="declinelist">Decline List</a>
-                            <!-- <a class="nav-link" routerLink="user">Map View</a> -->
+                            <a class="nav-link" routerLink="boardinghouselist">Boarding House</a>
                         </nav>
                     </div>
+                    <a class="nav-link" routerLink="profile" *ngIf="isUserOwner">
+                        <div class="sb-nav-link-icon"><mat-icon>account_circle</mat-icon></div>
+                        Profile
+                    </a>
+                    <a class="nav-link" routerLink="map" *ngIf="isUserOwner">
+                        <div class="sb-nav-link-icon"><mat-icon> location_on</mat-icon></div>
+                        View Map
+                    </a>
+
+
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                         *ngIf="isUserOwner" aria-expanded="false" aria-controls="collapsePages">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -64,21 +85,14 @@
 
                         </nav>
                     </div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#collapseReservation" aria-expanded="false" aria-controls="collapseReservation"
-                        *ngIf="isUserOwner">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Booking / Inquiries
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    <a class="nav-link" routerLink="roombooking" *ngIf="isUserOwner">
+                        <div class="sb-nav-link-icon"><mat-icon>perm_contact_calendar</mat-icon></div>
+                        Room Booking
                     </a>
-                    <div class="collapse" id="collapseReservation" aria-labelledby="headingTwo"
-                        data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link" routerLink="booking">View Booking</a>
-                            <!-- <a class="nav-link" routerLink="boardinghouse">Manage Inquiries</a> -->
-                        </nav>
-                    </div>
-
+                    <a class="nav-link" routerLink="report" *ngIf="isUserOwner">
+                        <div class="sb-nav-link-icon"><mat-icon>perm_contact_calendar</mat-icon></div>
+                        Reports
+                    </a>
                     <a class="nav-link" routerLink="login" (click)="logout()">
                         <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                         Log Out

@@ -1,22 +1,26 @@
 <section>
     <main>
         <div class="container-fluid px-4">
-            
             <div class="role-container">
                 <div *ngIf="isUserAdmin" class="role-box admin-box">
+
                     <h2>Welcome, Admin!</h2>
                     <p>You can manage all listings here.</p>
                 </div>
 
+
                 <div *ngIf="isUserOwner" class="role-box owner-box">
-                    <h2>Welcome, Owner!</h2>
+                    <img [src]="'https://boardinghouseapi.masterpiecesolutions.site/uploads/' + userData?.picture"
+                        alt="Boarding House Image" width="200" height="200" class="rounded-circle styled-img mb-3">
+
+                    <h2>Welcome, {{Owner_name}} !!</h2>
                     <p>You can manage your own properties.</p>
                 </div>
             </div>
             <hr>
 
             <div class="row">
-              
+
                 <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
                     <div class="dashboard-card admin-card">
                         <div class="card-body">
@@ -41,7 +45,7 @@
                     </div>
                 </div>
 
-               
+
                 <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
                     <div class="dashboard-card owner-card">
                         <div class="card-body">
@@ -49,10 +53,11 @@
                             <h1>{{Reservation}}</h1>
                         </div>
                         <div class="card-footer">
-                            <a href="#">View Details</a>
+                            <a routerLink="declinebooking">View Details</a>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
                     <div class="dashboard-card owner-card">
@@ -61,18 +66,50 @@
                             <h1>{{OwnedBoardingHouse}}</h1>
                         </div>
                         <div class="card-footer">
-                            <a routerLink="approvelist">View Details</a>
+                            <a routerLink="ownedboardinghouse">View Details</a>
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
+                    <div class="dashboard-card owner-card">
+                        <div class="card-body">
+
+                            <p class="status-pending">⏳ Pending Booking: <strong>{{ Pending }}</strong></p>
+                            <p class="status-approved">✅ Approved Booking: <strong>{{ Approved }}</strong></p>
+                            <p class="status-declined">❌ Declined Booking: <strong>{{ Declined }}</strong></p>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
+                    <div class="dashboard-card owner-card">
+                        <div class="card-body">
+                            <p class="status-pending">⏳ Pending Boarding House Submission: <strong>{{ Pending
+                                    }}</strong></p>
+                            <p class="status-approved">✅ Approved Boarding House Submission: <strong>{{ Approved
+                                    }}</strong></p>
+                            <p class="status-declined">❌ Declined Boarding House Submission: <strong>{{ Declined
+                                    }}</strong></p>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+                <hr>
             </div>
 
-          
+
             <div class="row" *ngIf="isUserAdmin">
                 <div class="col-xl-12">
                     <h1 class="map-title">Map Viewing: All Boarding House Locations</h1>
+                    <h3 class="text-center text-danger"> Review and approve the boarding house location submitted by the
+                        owner.
+                        The marked location is the approved boarding house</h3>
                     <hr>
-                    <app-map></app-map>
+                    <app-viewallboardinghousemap></app-viewallboardinghousemap>
                 </div>
             </div>
         </div>

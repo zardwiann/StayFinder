@@ -34,12 +34,24 @@ export class PublicService {
     return false;
   }
 
+  updateUserDetails(payload: any) {
+    return this.http.post<any>(this.api.getApi.update_account, payload, API_HEADERS_CONFIG)
+  }
+  get_users(payload: any) {
+    return this.http.get<any>(this.api.getApi.getowner, { params: payload });
+  }
+
+
   fetchOwner() {
     return this.http.get<any>(this.api.getApi.user_role);
   }
   boardinghouselist() {
     return this.http.get<any>(this.api.getApi.boardinghouselist);
   }
+  reservationlist() {
+    return this.http.get<any>(this.api.getApi.reservationlist);
+  }
+
   owner(): Observable<any> {
     return this.http.get<any>(this.api.getApi.ownerrecord);
   }
@@ -62,6 +74,16 @@ export class PublicService {
     return this.http.post<any>(this.api.getApi.SelectBoardinghouse, myFormData, {
     });
   }
+  SelectBooking(id: any): Observable<any> {
+    const myFormData = new FormData();
+    myFormData.append('id', id);
+    return this.http.post<any>(this.api.getApi.SelectBooking, myFormData, {
+    });
+  }
+
+  BookingApproval(payload: any) {
+    return this.http.post<any>(this.api.getApi.bookingapproval, payload, API_HEADERS_CONFIG)
+  }
 
 
   ApproveOwner(payload: any, id: any) {
@@ -69,7 +91,7 @@ export class PublicService {
   }
 
 
-  addbooking(data: any, boardingid: any, ownerid: any): Observable<any> {
+  addbooking(data: any): Observable<any> {
     return this.http.post(this.api.getApi.addbooking, data, { headers: { 'Content-Type': 'application/json' } });
   }
   UpdateStatus(payload: any) {
@@ -88,14 +110,23 @@ export class PublicService {
     myFormData.append('id', id)
     return this.http.post<any>(this.api.getApi.deleteownerboarding, myFormData)
   }
-
- 
-
+  deletebooking(id: any): Observable<any> {
+    var myFormData = new FormData();
+    myFormData.append('id', id)
+    return this.http.post<any>(this.api.getApi.deletebooking, myFormData)
+  }
   SelectBoardinghouse(id: any) {
     var myFormData = new FormData();
     myFormData.append('id', id);
     return this.http.post<any>(this.api.getApi.SelectBoardinghouse, myFormData)
 
+  }
+
+  UpdateBoardinghouse(payload: any, id: any) {
+    return this.http.post<any>(this.api.getApi.UpdateBoardinghouse, payload, API_HEADERS_CONFIG)
+  }
+  addBoardingHouse(data: any) {
+    return this.http.post(this.api.getApi.addboardinghouse, data, { headers: { 'Content-Type': 'application/json' } })
   }
 
 

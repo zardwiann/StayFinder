@@ -15,7 +15,8 @@ export class Api {
         login: `${BASE_PATH}login.php`,
         register: `${BASE_PATH}register.php `,
         createaccount: `${BASE_PATH}createaccount.php `,
-
+        update_account: `${BASE_PATH}update_account.php `,
+        getowner: `${BASE_PATH}getowner.php`,
         // dashboard
 
         user_role: `${BASE_PATH}user_role.php `,
@@ -25,7 +26,7 @@ export class Api {
         updatestatus: `${BASE_PATH}updatestatus.php`,
         addboardinghouse: `${BASE_PATH}addboardinghouse.php `,
         selectboarding: `${BASE_PATH}selectboarding.php `,
-
+        reservationlist: `${BASE_PATH}reservationlist.php `,
         userlist: `${BASE_PATH}userlist.php `,
         boardinghouseownerlist: `${BASE_PATH}boardinghouseownerlist.php `,
 
@@ -34,10 +35,16 @@ export class Api {
         bookinglist: `${BASE_PATH}bookinglist.php`,
 
         mapview: `${BASE_PATH}mapview.php`,
+        map: `${BASE_PATH}map.php`,
         get_image: `${BASE_PATH}get_image.php`,
         updateboardinghouse:`${BASE_PATH}updateboardinghouse.php`,
 
         SelectBoardinghouse:`${BASE_PATH}SelectBoardinghouse.php`,
         deleteownerboarding: `${BASE_PATH}deleteownerboarding.php`,
+        bookingapproval: `${BASE_PATH}bookingapproval.php`,
+
+        SelectBooking:`${BASE_PATH}SelectBooking.php`,
+        UpdateBoardinghouse:`${BASE_PATH}UpdateBoardinghouse.php`,
+        deletebooking:`${BASE_PATH}deletebooking.php`,
     }
 }

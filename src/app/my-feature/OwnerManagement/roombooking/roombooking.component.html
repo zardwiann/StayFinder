@@ -1,0 +1,107 @@
+<div class="row d-flex p-2">
+    <div class="student-list  container-fluid">
+        <h2 class="boarding-title text-center"> Room Booking Boarding House List</h2>
+
+        <div class="m-3">
+            <span class="badge status-badge bg-warning text-dark mx-2">
+                ⏳ Waiting for Your Approval
+            </span>
+
+            <span class="badge status-badge bg-danger text-white mx-2">
+                ❌ Declined: Boarding House Booking Submission
+            </span>
+
+            <span class="badge status-badge bg-success text-white mx-2">
+                ✅ Approved: Boarding House Booking Submission
+            </span>
+        </div>
+        <mat-form-field class="col-md-12" appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+        </mat-form-field>
+        <table mat-table recycleRows matSort [dataSource]="dataSource" id="table" class="m-2 p-2">
+            <ng-container matColumnDef="row">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">No.</th>
+                <td mat-cell *matCellDef="let i = index " class="text-center"> {{i + 1}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="fullname">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Full Name</th>
+                <td mat-cell *matCellDef="let element" class="text-center">{{element.fullname}}</td>
+            </ng-container>
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Phone</th>
+                <td mat-cell *matCellDef="let element" class="text-center">{{element.phone}}</td>
+            </ng-container>
+         
+   
+            <ng-container matColumnDef="boardinghousename">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Boarding House</th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.housename}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="roomtype">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Room Type</th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.roomtype}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Price</th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.price}}
+                </td>
+            </ng-container>
+        
+
+            <ng-container matColumnDef="bookingstatus">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Booking Status</th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                    <span class="badge status-badge bg-warning text-dark" *ngIf="element.status === '0'">
+                        ⏳ Waiting for Your Approval
+                    </span>
+
+                    <span class="badge status-badge bg-danger text-white" *ngIf="element.status === '1'">
+                        ❌ Declined: Boarding House Booking Submission
+                    </span>
+
+                    <span class="badge status-badge bg-success text-white" *ngIf="element.status === '2'">
+                        ✅ Approved: Boarding House Booking Submission
+                    </span>
+                </td>
+            </ng-container>
+
+
+
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Action</th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                    <button class="btn custom-btn btn-outline-primary mx-2"(click)="ViewTenatDetails(element.id)">
+                        🔍 Details
+                    </button>
+
+                    <button class="btn custom-btn btn-outline-success mx-2" (click)="Option(element.id)"
+                        *ngIf="element.status === '1'">
+                        ✅ Approve
+                    </button>
+                    <button class="btn custom-btn btn-outline-danger mx-2" (click)="Option(element.id)"
+                        *ngIf="element.status === '2'">
+                        ❌ Declined
+                    </button>
+                    <button class="btn custom-btn btn-outline-success mx-2" (click)="Option(element.id)"
+                        *ngIf="element.status === '0'">
+                        ✅ Approve
+                    </button>
+                  
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+        <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[ 5, 10, 100]">
+        </mat-paginator>
+
+    </div>

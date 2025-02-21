@@ -1,20 +1,21 @@
 <section class="m-3">
-     <h1>Add Boarding House</h1>
-     <hr>
+    <h1>Add Boarding House</h1>
+    <hr>
     <div class="container py-1 h-100">
-        <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <form [formGroup]="form" class="example-form p-1 text-center" (ngSubmit)="submitForm()"
+        autocomplete="off">
             <div class="row d-flex justify-content-center align-items-center h-100">
-
                 <label class="form-label" for="customFile">Upload Picture</label>
-                 <hr>
+                <hr>
                 <input type="file" class="form-control" id="customFile" (change)="onFileSelected($event)"
                     formControlName="picture" />
-                    <hr>
+                <hr>
                 <div class="mt-4">
                     <div class="form-group">
-                        <label for="boardingHouseName">Boarding House Name</label>
-                        <input type="text" class="form-control" formControlName="housename"
-                            placeholder="Enter your boarding house name" />
+                        <mat-form-field appearance="outline">
+                            <mat-label>Boarding House </mat-label>
+                            <input matInput formControlName="housename">
+                        </mat-form-field>
                     </div>
 
                     <div class="autocomplete-container" style="position: relative;">
@@ -36,28 +37,33 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="roomsAvailable">Available Rooms</label>
-                        <input type="number" class="form-control" formControlName="room"
-                            placeholder="Number of available rooms" />
+                        <mat-form-field appearance="outline">
+                            <mat-label>Room</mat-label>
+                            <input matInput formControlName="room">
+                        </mat-form-field>
                     </div>
 
                     <div class="form-group">
-                        <label for="priceRange">Price Range</label>
-                        <input type="text" class="form-control" formControlName="price"
-                            placeholder="Enter your room price range" />
+                        <mat-form-field appearance="outline">
+                            <mat-label> Price</mat-label>
+                            <input matInput formControlName="price">
+                        </mat-form-field>
                     </div>
 
                     <div class="form-group">
-                        <label for="amenities">Amenities (Optional)</label>
-                        <textarea class="form-control" formControlName="amenities"
-                            placeholder="List amenities (Wi-Fi, AC, etc.)"></textarea>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Amenities (Optional)</mat-label>
+                            <textarea matInput formControlName="amenities"
+                                placeholder="List amenities (Wi-Fi, AC, etc.)" rows="3"></textarea>
+                        </mat-form-field>
+
                     </div>
                 </div>
 
             </div>
             <div class=" ">
                 <button type="submit" class="btn btn-primary mt-2 col-4 mx-2">Add</button>
-                <button  mat-dialog-close class="btn btn-danger mt-2  col-4 ">Close</button>
+                <button mat-dialog-close class="btn btn-danger mt-2  col-4 ">Close</button>
             </div>
 
         </form>

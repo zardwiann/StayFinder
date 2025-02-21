@@ -11,6 +11,7 @@ import { BoardingDetailsComponent } from '../../BoardingHouse/boarding-details/b
 import { DeletecomponentComponent } from 'src/app/Form/deletecomponent/deletecomponent.component';
 import { finalize, take } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UpdateboardinghouseComponent } from 'src/app/Form/updateboardinghouse/updateboardinghouse.component';
 
 @Component({
   selector: 'app-ownedboardinghouse',
@@ -19,15 +20,17 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class OwnedboardinghouseComponent {
   owner: any = []
-  displayedColumns: string[] = ['row', 'boardinghousename', 'BoardingHouseAddress', 'action']
+  displayedColumns: string[] = ['row', 'boardinghousename', 'BoardingHouseAddress','boardinghousestatus', 'action']
   dataSource = this.owner;
   owner_data: any = Usermodule;
   angForm: any = FormGroup;
   currentusers: any
   owner_house: any
-  boardinghouse: any = Usermodule;
-  componetdata: any;
+  boardinghouse: any = [];
+  componentdata: any;
+
   @ViewChild('paginator') paginator!: MatPaginator;
+
 
   constructor(
     public public_service: PublicService,
@@ -87,6 +90,7 @@ export class OwnedboardinghouseComponent {
             room: this.owner_data.room,
             price: this.owner_data.price,
             picture: this.owner_data.picture,
+            owner_picture: this.owner_data.owner_picture,
             status: this.owner_data.status || 'Pending',
           }
         }
@@ -129,16 +133,31 @@ export class OwnedboardinghouseComponent {
     this.public_service.SelectBoardingHouse(id)
       .subscribe(data => {
         this.boardinghouse = data[0]
-        console.log(this.boardinghouse)
-
+        
+        return this.dialog.open(UpdateboardinghouseComponent, {
+          width: '400px',
+          data: {
+            comp: this.componentdata = {
+              id: this.boardinghouse.register_id,
+              housename: this.boardinghouse.housename,
+              room: this.boardinghouse.room,
+              price: this.boardinghouse.price,
+              amenities: this.boardinghouse.amenities
+            }
+          }
+        }).afterClosed().subscribe(result => {
+          this.getOwner()
+        })
       })
+
+
   }
   Addboarding() {
     this.dialog.open(AddboardinghouseComponent, {
       width: '500px',
       height: '700px'
     }).afterClosed().subscribe(result => {
-       this.getOwner();
+      this.getOwner();
     })
   }
 

@@ -1,104 +1,83 @@
 <section class="vh-100"
     style="background: url('https://images.pexels.com/photos/1546166/pexels-photo-1546166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');background-size: cover;">
     <div class="container py-5 h-100">
-        <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)">
+        <form [formGroup]="form" class="example-form p-1 text-center" (ngSubmit)="submitForm()">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-xl-10">
                     <div class="card" style="border-radius: 1rem;">
                         <div class="row g-0">
                             <div class="col-md-6 col-lg-5 d-none d-md-block">
                                 <div class="card-body p-4 p-lg-5 text-black">
-                                    <div class="form-group">
-                                        <label class="fs-1 ">Create Account</label>
+                                    <!-- Logo Section -->
+                                    <div class="text-center mb-4">
+                                        <img src="../../../assets/img/logo.png" alt="Logo" class="img-fluid"
+                                            style="max-width: 150px;">
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="fs-1">Create Account</label>
+                                    </div>
+                                    <hr>
+                                    <input type="file" class="form-control" id="customFile" (change)="onFileSelected($event)"
+                                        formControlName="picture" />
+                                    <hr>
                                     <div class="form-group mt-5">
-                                        <label for="fullName">Full Name</label>
                                         <input type="text" class="form-control" formControlName="fullname"
                                             placeholder="Enter your full name" required />
                                     </div>
+                                    <hr>
 
                                     <div class="form-group">
-                                        <label for="email">Email Address</label>
                                         <input type="email" class="form-control" formControlName="username"
                                             placeholder="Enter your email" required />
+                                        <small class="text-danger"
+                                            *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
+                                            <span *ngIf="form.get('username')?.hasError('required')">Email is
+                                                required.</span>
+                                            <span *ngIf="form.get('username')?.hasError('email')">Enter a valid
+                                                email address (e.g., example&#64;domain.com).</span>
+                                        </small>
                                     </div>
+                                    <hr>
 
                                     <div class="form-group">
-                                        <label for="phone">Phone Number</label>
                                         <input type="text" class="form-control" formControlName="phone"
                                             placeholder="Enter your phone number" required />
+                                        <small class="text-danger"
+                                            *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">
+                                            <span *ngIf="form.get('phone')?.hasError('required')">Phone number
+                                                is required.</span>
+                                            <span *ngIf="form.get('phone')?.hasError('pattern')">Enter a valid
+                                                phone number (10-12 digits).</span>
+                                        </small>
                                     </div>
-
+                                    <hr>
                                     <div class="form-group">
-                                        <label for="phone">Address</label>
                                         <input type="text" class="form-control" formControlName="address"
                                             placeholder="Enter your Address" required />
                                     </div>
+                                    <hr>
 
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" class="form-control" formControlName="password"
-                                            placeholder="Enter your password" required />
+                                    <div class="form-outline mb-4 position-relative">
+                                        <input [type]="isPasswordVisible ? 'text' : 'password'" id="passwordField"
+                                            class="form-control form-control-lg pe-5" formControlName="password"
+                                            placeholder="Enter Password" />
+
+                                        <span class="position-absolute top-50 mb-2 end-0 translate-middle-y me-3"
+                                            (click)="togglePasswordVisibility()" style="cursor: pointer;">
+                                            <i [ngClass]="isPasswordVisible ? 'fas fa-eye' : 'fas fa-eye-slash'"
+                                                class="fs-5"></i>
+                                        </span>
                                     </div>
+                                    <hr>
                                     <div class="row">
                                         <button type="submit" class="btn btn-primary mt-2">Sign Up</button>
-                                        <button class="btn btn-primary mt-2"routerLink="/login">Log In</button>
+                                        <p class="mb-5 pb-lg-2 mt-3" style="color: #393f81;">Already Have Account? <a
+                                            routerLink="/login" style="color: #393f81;">Login</a></p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                                <div class="card-body p-4 p-lg-5 text-black">
 
-                                    <div class="mt-4">
-                                        <label class="fw-bold">Owner</label>
-                                        <div class="form-group">
-                                            <label for="boardingHouseName">Boarding House Name</label>
-                                            <input type="text" class="form-control" formControlName="housename"
-                                                placeholder="Enter your boarding house name" />
-                                        </div>
-
-                                        <div class="autocomplete-container" style="position: relative;">
-                                            <input type="text" [(ngModel)]="query" (input)="searchPlaces()"
-                                                formControlName="address" placeholder="Location"
-                                                class="form-control" autocomplete="off" />
-                                            <div *ngIf="places.length > 0" class="dropdown" style="
-                                                position: absolute;
-                                                z-index: 1000;
-                                                background: white;
-                                                border: 1px solid #ccc;
-                                                width: 100%;
-                                                max-height: 200px; /* Set the desired height */
-                                                overflow-y: auto; /* Enable vertical scrolling */
-                                              ">
-                                                <div *ngFor="let place of places" (click)="selectPlace(place)"
-                                                    class="dropdown-item" style="padding: 8px; cursor: pointer;">
-                                                    {{ place.display_name }}
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label for="roomsAvailable">Available Rooms</label>
-                                            <input type="number" class="form-control" formControlName="room"
-                                                placeholder="Number of available rooms" />
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="priceRange">Price Range</label>
-                                            <input type="text" class="form-control" formControlName="price"
-                                                placeholder="Enter your room price range" />
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="amenities">Amenities (Optional)</label>
-                                            <textarea class="form-control" formControlName="amenities"
-                                                placeholder="List amenities (Wi-Fi, AC, etc.)"></textarea>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>

@@ -6,9 +6,7 @@ import { MyFeatureRoutingModule } from './my-feature-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListUserComponent } from './UserManagement/list-user/list-user.component';
-import { ListBoardinghouseComponent } from './BoardingHouse/list-boardinghouse/list-boardinghouse.component';
-import { SubmissionComponent } from './BoardingHouse/submission/submission.component';
-import { BoardinghousemapComponent } from './BoardingHouse/boardinghousemap/boardinghousemap.component';
+ 
 import { UserComponent } from './UserManagement/user/user.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,10 +19,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { OwnedboardinghouseComponent } from './OwnerManagement/ownedboardinghouse/ownedboardinghouse.component';
 import { AddboardinghouseComponent } from '../Form/addboardinghouse/addboardinghouse.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BookingComponent } from './ReservationPage/booking/booking.component';
-import { MapComponent } from '../Map/map/map.component';
+
 import { GoogleMapsModule } from '@angular/google-maps';
-import { DeclinebhComponent } from './BoardingHouse/declinebh/declinebh.component';
+ 
+ 
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ViewallboardinghousemapComponent } from './viewallboardinghousemap/viewallboardinghousemap.component';
+import { ProfileComponent } from './OwnerManagement/profile/profile.component';
+import { ReportComponent } from './OwnerManagement/report/report.component';
+import { RoombookingComponent } from './OwnerManagement/roombooking/roombooking.component';
+import { BoardinghouselistComponent } from './BoardingHouse/boardinghouselist/boardinghouselist.component';
 
 @NgModule({
   declarations: [
@@ -32,18 +37,17 @@ import { DeclinebhComponent } from './BoardingHouse/declinebh/declinebh.componen
     DashboardComponent,
     SidebarComponent,
     ListUserComponent,
-    ListBoardinghouseComponent,
-    SubmissionComponent,
-    BoardinghousemapComponent,
+  
     UserComponent,
     BoardingDetailsComponent,
     OwnedboardinghouseComponent,
     AddboardinghouseComponent,
-    BookingComponent,
-    MapComponent,
-    DeclinebhComponent
-
-
+ 
+    ViewallboardinghousemapComponent,
+    ProfileComponent,
+    ReportComponent,
+    RoombookingComponent,
+    BoardinghouselistComponent,
 
 
   ],
@@ -61,11 +65,15 @@ import { DeclinebhComponent } from './BoardingHouse/declinebh/declinebh.componen
     ReactiveFormsModule,
     GoogleMapsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatBadgeModule,
+    MatAutocompleteModule,
+
+
   ],
 
   exports: [
-    MapComponent
+
   ]
 })
 export class MyFeatureModule { }

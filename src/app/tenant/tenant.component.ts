@@ -72,10 +72,10 @@ export class TenantComponent {
             amenities: this.owner_data.amenities,
             room: this.owner_data.room,
             price: this.owner_data.price,
+            owner_picture:this.owner_data.owner_picture,
             status: this.owner_data.status || 'Pending',
           }
         }
-
       }).afterClosed().subscribe(result => {
 
       });
@@ -89,12 +89,11 @@ export class TenantComponent {
       this.owner_data = data[0];
       
       this.dialog.open(BookingformComponent, {
-        width: '700px',
+        width: '800px',
         data: {
           comp: {
             id: this.owner_data.register_id,
             fullname: this.owner_data.owner_name,
-         
             owneraddress: this.owner_data.owner_address,
             housename: this.owner_data.housename,
             houseaddress: this.owner_data.house_address,

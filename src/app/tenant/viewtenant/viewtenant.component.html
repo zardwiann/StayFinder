@@ -1,0 +1,41 @@
+<div class="container mt-1">
+    <div class="row justify-content-center">
+        <div class="row">
+            <div class="card">
+                <div class="card-header text-center bg-primary text-white">
+                    <h2 class="mb-0">Tenant Details</h2>
+                    <span class="badge status-badge bg-success text-white" *ngIf="data.comp.status === '2'">
+                        ✅ Approved Booking
+                    </span>
+                    <span class="badge status-badge bg-danger text-white" *ngIf="data.comp.status === '1'">
+                        ❌ Declined: Booking
+                    </span>
+                    <span class="badge status-badge bg-warning text-dark" *ngIf="data.comp.status === '0'">
+                        ⏳ Waiting for Your Approval
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="image-container">
+                        <img [src]="'https://boardinghouseapi.masterpiecesolutions.site/uploads/' + data.comp.picture" alt="Boarding House Image"
+                            width="300" height="300" class="rounded-circle styled-img">
+                    </div>
+                    <h4 class="card-title fw-bold text-danger">Tenant</h4>
+                    <h5 class="card-title">{{data.comp.fullname}}</h5>
+                    <p class="text-muted mb-1"><i class="fas fa-phone-alt"></i>{{data.comp.phone}}</p>
+                    <p class="text-muted"><i class="fas fa-envelope"></i> {{data.comp.email}}</p>
+                    <p class="text-muted"><i class="fas fa-location"></i> {{data.comp.address}}</p>
+                    <hr>
+                    <h4 class="card-title fw-bold text-danger">Guardian Information</h4>
+                    <h5 class="card-title">{{data.comp.Guardian}}</h5>
+                    <p class="text-muted mb-1"><i class="fas fa-phone-alt"></i>{{data.comp.IncaseofEmergency}}</p>
+
+                    <hr>
+                    <button mat-raised-button color="primary" value="Cancel" [mat-dialog-close]="false"> Close</button>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

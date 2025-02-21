@@ -6,6 +6,9 @@ import { of } from 'rxjs';
 import { LoginserviceService } from 'src/app/User/loginservice.service';
 import { PublicService } from 'src/app/PublicService/public.service';
 import { Api } from 'src/app/API/api';
+import { MatDialog } from '@angular/material/dialog';
+import { SavenotificationComponent } from '../savenotification/savenotification.component';
+import { ErrorcomponentComponent } from '../errorcomponent/errorcomponent.component';
 
 @Component({
   selector: 'app-addboardinghouse',
@@ -15,7 +18,7 @@ import { Api } from 'src/app/API/api';
 export class AddboardinghouseComponent {
   form: any = FormGroup;
   selectedFile: File | null = null;
-  
+
   query: string = '';
   places: any[] = [];
   place: any;
@@ -62,7 +65,8 @@ export class AddboardinghouseComponent {
     private http: HttpClient,
     public public_service: PublicService,
     public api: Api,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog: MatDialog
 
   ) {
     this.FormValidator()
@@ -92,6 +96,7 @@ export class AddboardinghouseComponent {
     }
   }
   submitForm() {
+
     const userId = sessionStorage.getItem('userId');
     const formData = new FormData();
     Object.keys(this.form.controls).forEach((key) => {
@@ -104,16 +109,27 @@ export class AddboardinghouseComponent {
       formData.append('picture', this.selectedFile);
 
     }
-    this.http.post(this.api.getApi.addboardinghouse, formData).subscribe(
-      (response) => {
-        alert("Data Saved Successfully");
-        this.formReset();
+    this.http.post(this.api.getApi.addboardinghouse, formData).subscribe({
+      next: (data) => {
+        const dialogRef = this.dialog.open(SavenotificationComponent, {
+          width: '300px',
+          data: {}
+        }); dialogRef.afterOpened().subscribe(_ => {
 
-      },
-      (error) => {
-        alert("Fill the missing Field")
-        this.formReset();
+        })
+      }, error: (error: any) => {
+        const dialogRef = this.dialog.open(ErrorcomponentComponent, {
+          width: '300px',
+          data: {
+            console
+          }
+        }); dialogRef.afterOpened().subscribe(_ => {
+
+        })
+        console.log(error)
       }
+    }
+
     );
   }
   formReset() {

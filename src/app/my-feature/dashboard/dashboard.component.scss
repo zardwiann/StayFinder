@@ -3,12 +3,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+
+}
+
+section {
+   background-color: white;
+    min-height: 100vh;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 40px;
 }
 
 .role-box {
     width: 60%;
     padding: 20px;
+    margin-top: 20px;
     border-radius: 10px;
     text-align: center;
     font-weight: bold;
@@ -22,34 +38,47 @@
 }
 
 .admin-box {
-    background: linear-gradient(135deg, #ff6b6b, #ff8787);
+    background-color: white;
+    color: black; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-weight: bold;
 }
 
 .owner-box {
-    background: linear-gradient(135deg, #6bc5ff, #87d3ff);
-}
-
-/* Dashboard Cards */
-.dashboard-card {
-    border-radius: 10px;
-    text-align: center;
-    color: white;
+    color: black;
+    background-color: white;
+    color: black;  
     padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-weight: bold;
 }
-
-.dashboard-card:hover {
-    transform: translateY(-5px);
-}
+ 
 
 .admin-card {
-    background: linear-gradient(135deg, #ff6b6b, #ff8787);
+    background-color: white;
+    color: black;  
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-weight: bold;
 }
 
 .owner-card {
-    background: linear-gradient(135deg, #6bc5ff, #87d3ff);
+    color: black;
+    background-color: white;
+
+    color: black;  
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-weight: bold;
 }
 
 /* Card Footer */
@@ -59,9 +88,12 @@
     padding: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
-
+hr{
+     margin-top: 30px;
+     margin-bottom: 40px;
+}
 .card-footer a {
-    color: white;
+    color: rgb(12, 12, 12);
     text-decoration: none;
     font-weight: bold;
 }
@@ -76,4 +108,54 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+}
+.dashboard-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.dashboard-card h5 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.dashboard-card h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.status-pending {
+    color: #ffc107; 
+    font-size: 16px;
+}
+
+.status-approved {
+    color: #28a745;  
+    font-size: 16px;
+}
+
+.status-declined {
+    color: #dc3545;  
+    font-size: 16px;
+}
+
+.card-footer {
+    background: #f8f9fa;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.card-footer a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.card-footer a:hover {
+    text-decoration: underline;
 }

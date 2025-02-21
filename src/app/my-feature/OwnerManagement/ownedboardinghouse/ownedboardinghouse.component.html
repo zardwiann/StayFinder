@@ -1,14 +1,26 @@
 <div class="row d-flex p-2">
-    <div class="student-list m-3 col-10 shadow-lg p-3 border border-dark">
-        <div class="rounded">
-            <h2 class="p-4 text-secondary"> <u>Managed Houses|| Owned BoardingHouse </u></h2>
+    <div class="student-list  container-fluid">
+        <h2 class="boarding-title text-center"> Owned Boarding House List</h2>
+        <div class="m-3">
+            <span class="badge status-badge bg-warning text-dark mx-2">
+                ⏳ Waiting for Admin Approval
+            </span>
+            <span class="badge status-badge bg-danger text-white mx-2">
+                ❌ Declined: Boarding House Submission
+            </span>
+
+            <span class="badge status-badge bg-success text-white mx-2">
+                ✅ Approved: Boarding House Submission
+            </span>
         </div>
+
         <mat-form-field class="col-md-12" appearance="outline">
             <mat-label>Search</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
         </mat-form-field>
-        <button class="btn btn-primary" (click)="Addboarding()">Add Boarding House</button>
+        <button class="btn btn-secondary" (click)="Addboarding()">
 
+            Add Boarding House</button>
         <table mat-table recycleRows matSort [dataSource]="dataSource" id="table" class="m-2 p-2">
             <ng-container matColumnDef="row">
                 <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">No.</th>
@@ -18,6 +30,21 @@
             <ng-container matColumnDef="boardinghousename">
                 <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Boarding House Name</th>
                 <td mat-cell *matCellDef="let element" class="text-center">{{element.housename}}</td>
+            </ng-container>
+            <ng-container matColumnDef="boardinghousestatus">
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Boarding House Status</th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                    <span class="badge status-badge bg-success text-white" *ngIf="element.status === '2' ">
+                        ✅ Approved: Boarding House Submission
+                    </span>
+                    <span class="badge status-badge bg-warning text-dark" *ngIf="element.status === '0' ">
+                        ⏳ Waiting for Admin Approval
+                    </span>
+                    <span class="badge status-badge bg-danger text-white" *ngIf="element.status === '1'">
+                        ❌ Declined: Boarding House Submission
+                    </span>
+ 
+                </td>
             </ng-container>
             <ng-container matColumnDef="BoardingHouseAddress">
                 <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">Boarding House Address</th>
@@ -29,17 +56,16 @@
                 <th mat-header-cell *matHeaderCellDef class="text-center bg-dark text-white">View</th>
                 <td mat-cell *matCellDef="let element" class="text-center">
 
-
-                    <button class="btn btn-outline-success mx-2" (click)="ViewBoardingHouseDetails(element.id)">
-                        View
+                    <button class="btn custom-btn btn-outline-success mx-1"
+                        (click)="ViewBoardingHouseDetails(element.id)">
+                        👁️ View
                     </button>
-                    <button class="btn btn-outline-danger mx-2" (click)="Delete(element.id)">
+                    <button class="btn custom-btn btn-outline-danger mx-1" (click)="Delete(element.id)">
                         <mat-icon>delete</mat-icon>
                     </button>
-                    <button class="btn btn-outline-warning mx-2" (click)="Update(element.id)">
-                        <mat-icon class="text=warning">edit</mat-icon>
+                    <button class="btn custom-btn btn-outline-warning mx-1" (click)="Update(element.id)">
+                        <mat-icon class="text-warning">edit</mat-icon>
                     </button>
-
                 </td>
             </ng-container>
 

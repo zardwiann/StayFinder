@@ -18,23 +18,33 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { BookingformComponent } from './Form/bookingform/bookingform.component';
-import { MapComponent } from './Map/map/map.component';
-import { GoogleMapsModule } from '@angular/google-maps';
-import { MapdetailsComponent } from './Map/mapdetails/mapdetails.component';
-import { DeletecomponentComponent } from './Form/deletecomponent/deletecomponent.component';
  
-
+import { GoogleMapsModule } from '@angular/google-maps';
+import { DeletecomponentComponent } from './Form/deletecomponent/deletecomponent.component';
+import { BookingapprovalComponent } from './Form/bookingapproval/bookingapproval.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { UpdateboardinghouseComponent } from './Form/updateboardinghouse/updateboardinghouse.component';
+import { SavenotificationComponent } from './Form/savenotification/savenotification.component';
+import { ErrorcomponentComponent } from './Form/errorcomponent/errorcomponent.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ViewAllLocationComponent } from './view-all-location/view-all-location.component';
+import { ViewtenantComponent } from './tenant/viewtenant/viewtenant.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
-    UpdateStatusComponent,
+    UpdateStatusComponent, 
     TenantComponent,
     BookingformComponent,
-    MapdetailsComponent,
-    DeletecomponentComponent,
-  
     
-  
+    DeletecomponentComponent,
+    BookingapprovalComponent,
+    UpdateboardinghouseComponent,
+    SavenotificationComponent,
+    ErrorcomponentComponent,
+    ViewAllLocationComponent,
+    ViewtenantComponent
+     
 
   ],
   imports: [
@@ -53,6 +63,8 @@ import { DeletecomponentComponent } from './Form/deletecomponent/deletecomponent
     GoogleMapsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatBadgeModule,
+    MatAutocompleteModule,
 
 
     MatIconModule,
@@ -69,7 +81,6 @@ import { DeletecomponentComponent } from './Form/deletecomponent/deletecomponent
 
   ],
   exports: [
-     MapdetailsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

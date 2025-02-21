@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Approve or Reject</h2>
+<mat-dialog-content>
+  <form [formGroup]="statusForm" (ngSubmit)="updateStatus()">
+    <mat-form-field appearance="outline">
+      <mat-label>Select Status</mat-label>
+      <mat-select formControlName="status">
+      
+        <mat-option value="1">Decline</mat-option>
+        <mat-option value="2">Approved</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-dialog-actions>
+      <button class="btn btn-primary mx-2" [disabled]="statusForm.invalid">OK</button>
+      <button class="btn btn-danger" [mat-dialog-close]>Cancel</button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

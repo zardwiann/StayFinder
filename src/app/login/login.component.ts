@@ -16,7 +16,7 @@ export class LoginComponent {
   angForm: any = FormGroup;
   type: any;
   users: Usermodule[] = [];
-
+  isPasswordVisible: boolean = false;
   constructor(
     private authservice: LoginserviceService,
     private fb: FormBuilder,
@@ -38,10 +38,10 @@ export class LoginComponent {
       .subscribe(
         (response) => {
           if (response?.success && response?.user?.id) {
-            // Store user details in sessionStorage
             sessionStorage.setItem('userId', response.user.id);
-            sessionStorage.setItem('userRole', response.user.role);
+             sessionStorage.setItem('userRole', response.user.role);
             sessionStorage.setItem('userStatus', response.user.status);
+            sessionStorage.setItem('userFullname', response.user.fullname);
             this.router.navigate(['/main']);
           } else {
             console.error('Invalid user data received:', response?.message || 'No user data available');
@@ -53,5 +53,8 @@ export class LoginComponent {
       );
   }
   
+  togglePasswordVisibility() {
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
 
 }

@@ -1,0 +1,28 @@
+.boarding-title {
+    font-size: 24px;  
+    font-weight: bold;  
+    color: #007bff; 
+    padding: 10px 0; 
+    text-transform: uppercase;  
+    letter-spacing: 1px; 
+    border-bottom: 3px solid #007bff; 
+    display: inline-block;  
+  }
+  
+  .boarding-title::before {
+    content: "🏠 ";  
+    font-size: 26px;
+  }
+
+  .status-badge {
+    font-size: 14px;  
+    padding: 10px 15px; 
+    border-radius: 20px;  
+    display: inline-block;  
+    font-weight: bold;  
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+    text-transform: uppercase;  
+    letter-spacing: 0.5px;  
+  }
+  
+  

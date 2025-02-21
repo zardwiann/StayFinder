@@ -2,11 +2,30 @@
     <div class="card m-4 shadow-sm custom-card">
         <div class="card-body">
 
-            <div class="text-center">
-                <img [src]="'https://boardinghouseapi.masterpiecesolutions.site/uploads/' + house.picture"
-                    alt="Boarding House Image" width="300px" height="300px">
+            <div class="image-container">
+                <img [src]="'https://localhost/bhml/uploads/' + house.owner_picture" alt="Owner Image" width="300"
+                    height="300" class="rounded-circle styled-img">
+
+                <img [src]="'https://localhost/bhml/uploads/' + house.picture" alt="Boarding House Image" width="300"
+                    height="300" class="rounded-circle styled-img">
             </div>
 
+            <div class="text-center">
+
+            </div>
+            <h1 class="text-center mb-4">
+                Boarding House Details
+                <span class="badge status-badge bg-success text-white" *ngIf="house.status === '2'">
+                    ✅ Approved: Boarding House Submission
+                </span>
+                <span class="badge status-badge bg-danger text-white" *ngIf="house.status === '1'">
+                    ❌ Declined: Boarding House Submission
+                </span>
+                <span class="badge status-badge bg-warning text-dark" *ngIf="house.status === '0'">
+                    ⏳ Waiting for Admin Approval
+                </span>
+        
+            </h1>
 
             <h2 class="card-title text-primary mt-3">{{ house.housename }}</h2>
             <p class="card-text"><strong>Location:</strong> {{ house.house_address }}, Sindangan Zamboanga Del Norte</p>

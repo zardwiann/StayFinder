@@ -1,0 +1,28 @@
+.profile-container {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.styled-img {
+    border: 4px solid #007bff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+.boarding-title {
+    font-size: 24px;  
+    font-weight: bold;  
+    color: #007bff; 
+    padding: 10px 0; 
+    text-transform: uppercase;  
+    letter-spacing: 1px; 
+    border-bottom: 3px solid #007bff; 
+    display: inline-block;  
+  }
+  
+  .boarding-title::before {
+ 
+    font-size: 26px;
+  }
+  
