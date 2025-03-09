@@ -14,7 +14,7 @@ import { Usermodule } from 'src/app/User/user';
 })
 export class ReportComponent {
   owner: any = []
-  displayedColumns: string[] = ['row', 'address', 'boardinghousename', 'Total','numberooms']
+  displayedColumns: string[] = ['row', 'address', 'boardinghousename', 'Total', 'numberooms']
   dataSource = this.owner;
   owner_data: any = Usermodule;
   angForm: any = FormGroup;
@@ -36,7 +36,7 @@ export class ReportComponent {
     const userId = sessionStorage.getItem('userId');
     this.public_service.boardinghouselist().subscribe(
       data => {
-        this.owner = data
+        this.owner = data.filter((s: any) => s.ownerid.toString() === userId)
         this.setupDataSource(this.owner)
       }
     )
@@ -46,6 +46,4 @@ export class ReportComponent {
     this.dataSource = new MatTableDataSource(this.owner)
   }
 
-
-   
 }

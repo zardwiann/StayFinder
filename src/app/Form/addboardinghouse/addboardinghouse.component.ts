@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { LoginserviceService } from 'src/app/User/loginservice.service';
 import { PublicService } from 'src/app/PublicService/public.service';
 import { Api } from 'src/app/API/api';
 import { MatDialog } from '@angular/material/dialog';

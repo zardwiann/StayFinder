@@ -155,7 +155,7 @@ export class OwnedboardinghouseComponent {
   Addboarding() {
     this.dialog.open(AddboardinghouseComponent, {
       width: '500px',
-      height: '700px'
+      height: '800px'
     }).afterClosed().subscribe(result => {
       this.getOwner();
     })
