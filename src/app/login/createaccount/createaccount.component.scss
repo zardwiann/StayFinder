@@ -1,19 +1,61 @@
- 
-@media (min-width: 768px) {
-    .gradient-form {
-        height: 100vh !important;
-    }
-}
+ @media (min-width: 768px) {
+     .gradient-form {
+         height: 100vh !important;
+     }
+ }
 
-@media (min-width: 769px) {
-    .gradient-custom-2 {
-        border-top-right-radius: .3rem;
-        border-bottom-right-radius: .3rem;
-    }
-}
+ @media (min-width: 769px) {
+     .gradient-custom-2 {
+         border-top-right-radius: .3rem;
+         border-bottom-right-radius: .3rem;
+     }
+ }
 
- 
-.header-3 {
-    color: #0a0a0a;
 
-}
+ .header1 {
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     font-size: 70px;
+     color: #063468;
+ }
+
+ .card-login {
+     border-top: 5px solid #3a38ec;
+ }
+
+
+
+ .paragraph-2 {
+     color: #3a38ec;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     font-size: medium;
+
+ }
+
+ .bgbutton {
+     background-color: #3a38ec;
+     color: white;
+ }
+
+ .bgcolor {
+     background: url('../../../assets/img/card-bg2.png');
+     border-radius: 20px;
+     border-bottom: 5px solid #3a38ec;
+     border-right: 5px solid #3a38ec;
+
+ }
+
+ .card-form {
+     border-radius: 20px;
+     border-left: 5px solid #3a38ec;
+     border-top: none;
+ }
+
+ .span-logo {
+     color: #3a38ec;
+ }
+
+ .bgrow {
+     border-right: 5px solid #3a38ec;
+     border-radius: 20px;
+
+ }

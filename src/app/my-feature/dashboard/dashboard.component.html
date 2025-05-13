@@ -1,117 +1,110 @@
 <section>
     <main>
-        <div class="container-fluid px-4">
-            <div class="role-container">
-                <div *ngIf="isUserAdmin" class="role-box admin-box">
+        <div class="container-fluid px-4 ">
+            <div class="row   ">
 
-                    <h2>Welcome, Admin!</h2>
-                    <p>You can manage all listings here.</p>
-                </div>
-
-
-                <div *ngIf="isUserOwner" class="role-box owner-box">
-                    <img [src]="'https://boardinghouseapi.masterpiecesolutions.site/uploads/' + userData?.picture"
-                        alt="Boarding House Image" width="200" height="200" class="rounded-circle styled-img mb-3">
-
-                    <h2>Welcome, {{Owner_name}} !!</h2>
-                    <p>You can manage your own properties.</p>
-                </div>
-            </div>
-            <hr>
-
-            <div class="row">
-
-                <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
-                    <div class="dashboard-card admin-card">
-                        <div class="card-body">
-                            <h5>Total Owners</h5>
-                            <h1>{{Owner}}</h1>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
-                    <div class="dashboard-card admin-card">
-                        <div class="card-body">
-                            <h5>Total Boarding Houses</h5>
-                            <h1>{{BoardingHouse}}</h1>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
-                    <div class="dashboard-card owner-card">
-                        <div class="card-body">
-                            <h5>Total Reservations</h5>
-                            <h1>{{Reservation}}</h1>
-                        </div>
-                        <div class="card-footer">
-                            <a routerLink="declinebooking">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
-                    <div class="dashboard-card owner-card">
-                        <div class="card-body">
-                            <h5>Owned Boarding Houses</h5>
-                            <h1>{{OwnedBoardingHouse}}</h1>
-                        </div>
-                        <div class="card-footer">
-                            <a routerLink="ownedboardinghouse">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
-                    <div class="dashboard-card owner-card">
-                        <div class="card-body">
-
-                            <p class="status-pending">⏳ Pending Booking: <strong>{{ Pending }}</strong></p>
-                            <p class="status-approved">✅ Approved Booking: <strong>{{ Approved }}</strong></p>
-                            <p class="status-declined">❌ Declined Booking: <strong>{{ Declined }}</strong></p>
-                        </div>
-                        <div class="card-footer">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
-                    <div class="dashboard-card owner-card">
-                        <div class="card-body">
-                            <p class="status-pending">⏳ Pending Boarding House Submission: <strong>{{ Pending
-                                    }}</strong></p>
-                            <p class="status-approved">✅ Approved Boarding House Submission: <strong>{{ Approved
-                                    }}</strong></p>
-                            <p class="status-declined">❌ Declined Boarding House Submission: <strong>{{ Declined
-                                    }}</strong></p>
-                        </div>
-                        <div class="card-footer">
-
-                        </div>
-                    </div>
+                <div class=" mt-3 ">
+                    <input type="email" class="form-control border border-primary shadow-lg" placeholder="Search">
                 </div>
                 <hr>
-            </div>
+                <div class="col-md-10 mt-1">
+                    <div class="row">
+                        <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
+                            <div class="dashboard-card admin-card">
+                                <div class="card-body mb-3">
+                                    <i class="fas fa-users text-primary fs-4"></i>
+                                    <span class="fs-1 mx-3 text-primary">{{Owner}}</span>
+
+                                </div>
+                                <div class="card-footer">
+                                    <h5 class="">Total of Users</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
+                            <div class="dashboard-card admin-card">
+                                <div class="card-body mb-3">
+                                    <i class="fas fa-house-user text-primary fs-4"></i>
+                                    <span class="fs-1 mx-3 text-primary">{{BoardingHouse}}</span>
+                                </div>
+                                <div class="card-footer">
+                                    <h5>Total of Houses</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
+                            <div class="dashboard-card admin-card">
+                                <div class="card-body mb-3">
+                                    <i class="	fas fa-bed text-primary fs-4"></i>
+                                    <span class="fs-1 mx-3 text-primary">{{Reservation}}</span>
+
+                                </div>
+                                <div class="card-footer">
+                                    <h5>Total of Reservation</h5>
+                                </div>
+                            </div>
+                        </div>
 
 
-            <div class="row" *ngIf="isUserAdmin">
-                <div class="col-xl-12">
-                    <h1 class="map-title">Map Viewing: All Boarding House Locations</h1>
-                    <h3 class="text-center text-danger"> Review and approve the boarding house location submitted by the
+                        <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
+                            <div class="dashboard-card admin-card">
+                                <div class="card-body mb-3">
+                                    <i class="fas fa-house-user text-primary fs-4"></i>
+                                    <span class="fs-1 mx-3 text-primary">{{OwnedBoardingHouse}}</span>
+                                </div>
+                                <div class="card-footer">
+                                    <h5>Owned Boarding Houses</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6" *ngIf="isUserOwner">
+                            <div class="dashboard-card admin-card">
+                                <div class="card-body mb-3">
+                                    <p class=""> Pending Booking: <strong>{{ Pending }}</strong></p>
+                                    <p class=""> Approved Booking: <strong>{{ Approved }}</strong></p>
+                                    <p class=""> Declined Booking: <strong>{{ Declined }}</strong></p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6" *ngIf="isUserAdmin">
+                            <div class="dashboard-card admin-card">
+                                <div class="card-body mb-3">
+                                    <p class=""> Pending House : <strong>{{ Pending
+                                            }}</strong></p>
+                                    <p class=""> Approved House : <strong>{{ Approved
+                                            }}</strong></p>
+                                    <p class=""> Declined House : <strong>{{ Declined
+                                            }}</strong></p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="map-title mt-5">Map Viewing: All  House Rental Locations</h4>
+                    <h3 class="text-center text-danger"> Review and approve the  house location submitted by the
                         owner.
-                        The marked location is the approved boarding house</h3>
-                    <hr>
+                        The marked location is the approved  houses</h3>
                     <app-viewallboardinghousemap></app-viewallboardinghousemap>
+                </div>
+                <div class="col-md-2  row2 shadow-lg">
+                    <div *ngIf="isUserAdmin" class=" text-center p-2">
+                        <img src="../../../assets/img/admin.png" alt="Boarding House Image" width="90" height="90"
+                            class="rounded-circle styled-img mb-1">
+                        <h3>Welcome, {{Owner_name}} !!</h3> <span>You can manage your own properties.</span>
+                    </div>
+                    <div *ngIf="isUserOwner" class="text-center p-2">
+                        <img [src]="'https://boardinghouseapi.masterpiecesolutions.site/uploads/' + userData?.picture"
+                            alt="Boarding House Image" width="100" height="100" class="rounded-circle styled-img mb-3">
+                        <h3>Welcome, {{Owner_name}} !!</h3><span>You can manage your own properties.</span>
+
+                    </div>
                 </div>
             </div>
         </div>
+
+
+
     </main>
 </section>

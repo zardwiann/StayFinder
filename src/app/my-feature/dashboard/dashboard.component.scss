@@ -1,161 +1,89 @@
-/* Role Section */
-.role-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+ .admin-card {
+     background-color: white;
+     color: black;
+     padding: 20px;
+     border-radius: 10px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+     text-align: center;
+     font-weight: bold;
+     height: 150px;
+     border-top: 5px solid #007bff;
+     border-left: 2px solid #007bff;
+ }
 
-}
 
-section {
-   background-color: white;
-    min-height: 100vh;
-    color: #333;
-    font-family: Arial, sans-serif;
-}
+ /* Card Footer */
+ .card-footer {
+     display: flex;
+     justify-content: center;
+     padding: 10px;
+     border-top: 1px solid rgba(255, 255, 255, 0.3);
 
-h5 {
-    font-size: 20px;
-}
+ }
 
-h2 {
-    font-size: 40px;
-}
-
-.role-box {
-    width: 60%;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
-    color: rgb(11, 11, 11);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.role-box:hover {
-    transform: scale(1.05);
-}
-
-.admin-box {
-    background-color: white;
-    color: black; 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    font-weight: bold;
-}
-
-.owner-box {
-    color: black;
-    background-color: white;
-    color: black;  
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    font-weight: bold;
-}
- 
-
-.admin-card {
-    background-color: white;
-    color: black;  
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    font-weight: bold;
-}
-
-.owner-card {
-    color: black;
-    background-color: white;
-
-    color: black;  
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Card Footer */
-.card-footer {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-hr{
+ hr {
      margin-top: 30px;
      margin-bottom: 40px;
-}
-.card-footer a {
-    color: rgb(12, 12, 12);
-    text-decoration: none;
-    font-weight: bold;
-}
+ }
 
-.card-footer a:hover {
-    text-decoration: underline;
-}
+ .card-footer a {
+     color: rgb(12, 12, 12);
+     text-decoration: none;
+     font-weight: bold;
+ }
 
-/* Map Section */
-.map-title {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-.dashboard-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-}
+ .card-footer a:hover {
+     text-decoration: underline;
+ }
 
-.dashboard-card h5 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-}
+ /* Map Section */
+ .map-title {
+     text-align: center;
+     font-size: 24px;
+     font-weight: bold;
+     margin-bottom: 20px;
+ }
 
-.dashboard-card h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #007bff;
-}
+ .dashboard-card {
+     background: #fff;
+     border-radius: 10px;
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
-.status-pending {
-    color: #ffc107; 
-    font-size: 16px;
-}
+     text-align: center;
+ }
 
-.status-approved {
-    color: #28a745;  
-    font-size: 16px;
-}
+ .dashboard-card h5 {
+     font-size: 18px;
+     color: #333;
+     margin-bottom: 10px;
+ }
 
-.status-declined {
-    color: #dc3545;  
-    font-size: 16px;
-}
+ .dashboard-card h1 {
+     font-size: 36px;
+     font-weight: bold;
+     color: #007bff;
+ }
 
-.card-footer {
-    background: #f8f9fa;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-}
 
-.card-footer a {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-}
+ .card-footer {
 
-.card-footer a:hover {
-    text-decoration: underline;
-}
+     padding: 10px;
+     border-top: 2px solid #007bff;
+     border-radius: 20px;
+     border-bottom: 2px solid #007bff;
+ }
+
+ .card-footer a {
+     text-decoration: none;
+     color: #007bff;
+     font-weight: bold;
+ }
+
+ .row2 {
+     height: 400px;
+     background: url('../../../assets/img/card-bg2.png');
+     background-size: cover;
+     border-radius: 20px;
+     border-top: 5px solid #007bff;
+     border-bottom: 2px solid #007bff;
+ }

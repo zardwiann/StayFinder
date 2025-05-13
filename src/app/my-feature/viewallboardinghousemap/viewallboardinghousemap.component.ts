@@ -34,7 +34,7 @@ export class ViewallboardinghousemapComponent  implements OnInit {
         const infoWindow = new google.maps.InfoWindow({
           content: `
             <div style="text-align: center;">
-              <img src="https://boardinghouseapi.masterpiecesolutions.site/uploads/${location.picture}" 
+              <img src="https://localhost/bhml/uploads/uploads/${location.picture}" 
                    alt="Boarding House Image" 
                    class="img-fluid" 
                    width="200px" height="100px" 

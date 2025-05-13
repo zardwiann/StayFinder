@@ -1,6 +1,6 @@
 <div class="container my-5">
     <h1 class="text-center mb-4">
-        Boarding House Details
+         House Details
         <span class="badge status-badge bg-success text-white" *ngIf="data.comp.status === '2'">
             ✅ Approved: Boarding House Submission
         </span>
@@ -10,14 +10,12 @@
         <span class="badge status-badge bg-warning text-dark" *ngIf="data.comp.status === '0'">
             ⏳ Waiting for Admin Approval
         </span>
-
     </h1>
-
     <div class="card mb-4">
         <div class="card-body">
             <div class="image-container">
             
-                <img [src]="'https://boardinghouseapi.masterpiecesolutions.site/uploads/' + data.comp.picture" alt="Boarding House Image" width="300"
+                <img [src]="'https://localhost/bhml/uploads/' + data.comp.picture" alt="Boarding House Image" width="300"
                     height="300" class="rounded-circle styled-img">
             </div>
 

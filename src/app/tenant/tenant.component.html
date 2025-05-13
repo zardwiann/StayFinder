@@ -1,9 +1,4 @@
 <section>
-    <nav class="navbar navbar-light bg-light m-2">
-        <a class="navbar-brand p-2" routerLink="/login">Login</a>
-        <img src=".././../assets/img/logo.png" alt=""class="img-fluid"width="100px"height="100px">
-    </nav>
-
     <div class="row p-2">
         <div class="col-lg-4 col-md-12 boarding-container">
             <div class="card-body p-3 border-1">
@@ -17,7 +12,7 @@
                         <div class="card shadow">
                             <div class="card-body text-center">
                                 <div class="image-container">
-                                    <img [src]="'https://boardinghouseapi.masterpiecesolutions.site/uploads/' + element.picture"
+                                    <img [src]="'https://localhost/bhml/uploads/' + element.picture"
                                         alt="Boarding House Image" width="200" height="200"
                                         class="rounded-circle styled-img">
                                 </div>
@@ -38,7 +33,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div *ngIf="dataSource.length === 0" class="text-center text-danger mt-3">
                     No data matching the filter "{{ input.value }}"
                 </div>

@@ -38,8 +38,8 @@ export class MapdetailsComponent implements OnInit {
           const infoWindow = new google.maps.InfoWindow({
             content: `
           <div style="text-align: center;">
-            <img src="https://boardinghouseapi.masterpiecesolutions.site/uploads/${location.picture}" 
-                 alt="Boarding House Image" 
+            <img src="https://localhost/bhml/uploads/${location.picture}" 
+                 alt=" House Image" 
                  class="img-fluid" 
                  width="200px" height="100px" 
                  style="border-radius: 10px; object-fit: cover;">

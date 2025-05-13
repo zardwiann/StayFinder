@@ -8,7 +8,7 @@ import { Api } from '../API/api';
   styleUrls: ['./view-all-location.component.scss']
 })
 export class ViewAllLocationComponent implements OnInit {
- map: any;
+  map: any;
   mapOptions = {
     center: { lat: 8.2334, lng: 123.0114 },
     zoom: 13
@@ -34,7 +34,7 @@ export class ViewAllLocationComponent implements OnInit {
         const infoWindow = new google.maps.InfoWindow({
           content: `
             <div style="text-align: center;">
- <img src="https://boardinghouseapi.masterpiecesolutions.site/uploads/${location.picture}"                    alt="Boarding House Image" 
+ <img src="/uploads/${location.picture}"alt="Boarding House Image" 
                    class="img-fluid" 
                    width="200px" height="100px" 
                    style="border-radius: 10px; object-fit: cover;">

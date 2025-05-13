@@ -1,100 +1,79 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
     <a class="navbar-brand ps-3" href="/main">
         <img src="../../../assets/img/logo.png" alt="Logo" class="img-fluid" style="max-height: 50px;">
+        <span>StayFinder</span>
     </a>
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
-        <i class="fas fa-bars"></i>
+    <button class="btn btn btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" (click)="toggleSidebar($event)">
+        <i class="fas fa-bars text-white fs-6"></i> <span class="mx-3 fs-6 text-white">Overview</span>
     </button>
 
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group"></div>
     </form>
 
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link text-white" *ngIf="isUserAdmin">
-                <i class="fas fa-user mx-2"></i> <span id="user-name"> Admin Dashboard</span>
-            </a>
-        </li>
-    </ul>
-    <ul class="navbar-nav ml-auto" *ngIf="isUserOwner">
-        <li class="nav-item">
-            <a class="nav-link text-white" href="#!">
-                <i class="fas fa-user mx-2"></i> <span id="user-name">Owner Dashboard</span>
-            </a>
-        </li>
-    </ul>
-</nav>
 
+</nav>
 
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
+        <nav class="sb-sidenav accordion sb-sidenav-dark bgcolor" id="sidenavAccordion">
+
+            <div class="sb-sidenav-menu shadow-lg">
                 <div class="nav">
+
                     <div class="sb-sidenav-menu-heading"></div>
-                    <a class="nav-link" routerLink="dashboard">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <button type="button" class="btn btn-primary m-2" *ngIf="isUserOwner">
+                        <i class=" sb-nav-link-icon fas fa-plus-circle mx-1"></i> Add Houses Rental
+                    </button>
+
+                    <div class="sb-sidenav-menu-heading"></div>
+                    <a class="nav-link text-dark " routerLink="dashboard">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-dark"></i></div>
                         Dashboard
                     </a>
-                    <div class="sb-sidenav-menu-heading"></div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-                        *ngIf="isUserAdmin" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    <a class="nav-link text-dark " routerLink="user" *ngIf="isUserAdmin">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users text-dark"></i></div>
                         User Management
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                        data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" routerLink="user">List of User</a>
-                        </nav>
-                    </div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#bhmanagement"
-                        *ngIf="isUserAdmin" aria-expanded="false" aria-controls="bhmanagement">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        BH Management
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    <a class="nav-link text-dark " routerLink="boardinghouselist" *ngIf="isUserAdmin">
+                        <div class="sb-nav-link-icon"><i class="fas fa-house-user text-dark"></i></div>
+                        House Management
                     </a>
-                    <div class="collapse" id="bhmanagement" aria-labelledby="headingOne"
-                        data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" routerLink="boardinghouselist">Boarding House</a>
-                        </nav>
-                    </div>
-                    <a class="nav-link" routerLink="profile" *ngIf="isUserOwner">
-                        <div class="sb-nav-link-icon"><mat-icon>account_circle</mat-icon></div>
+
+                    <a class="nav-link text-dark" routerLink="profile" *ngIf="isUserOwner">
+                        <div class="sb-nav-link-icon"><mat-icon class="text-dark">account_circle</mat-icon></div>
                         Profile
                     </a>
-                    <a class="nav-link" routerLink="map" *ngIf="isUserOwner">
-                        <div class="sb-nav-link-icon"><mat-icon> location_on</mat-icon></div>
+                    <a class="nav-link text-dark" routerLink="map" *ngIf="isUserOwner">
+                        <div class="sb-nav-link-icon"><mat-icon class="text-dark"> location_on</mat-icon></div>
                         View Map
                     </a>
 
 
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-                        *ngIf="isUserOwner" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse"
+                        data-bs-target="#collapsePages" *ngIf="isUserOwner" aria-expanded="false"
+                        aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns text-dark"></i></div>
                         Managed Houses
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link" routerLink="ownedboardinghouse">List Owned House</a>
+                            <a class="nav-link text-dark" routerLink="ownedboardinghouse">List Owned House</a>
 
                         </nav>
                     </div>
-                    <a class="nav-link" routerLink="roombooking" *ngIf="isUserOwner">
-                        <div class="sb-nav-link-icon"><mat-icon>perm_contact_calendar</mat-icon></div>
+                    <a class="nav-link text-dark" routerLink="roombooking" *ngIf="isUserOwner">
+                        <div class="sb-nav-link-icon"><mat-icon class="text-dark">perm_contact_calendar</mat-icon></div>
                         Room Booking
                     </a>
-                    <a class="nav-link" routerLink="report" *ngIf="isUserOwner">
-                        <div class="sb-nav-link-icon"><mat-icon>perm_contact_calendar</mat-icon></div>
+                    <a class="nav-link text-dark" routerLink="report" *ngIf="isUserOwner">
+                        <div class="sb-nav-link-icon"><mat-icon class="text-dark">perm_contact_calendar</mat-icon></div>
                         Reports
                     </a>
-                    <a class="nav-link" routerLink="login" (click)="logout()">
-                        <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                    <a class="nav-link text-dark" routerLink="login" (click)="logout()">
+                        <div class="sb-nav-link-icon text-dark"><i class="fas fa-sign-out-alt text-dark"></i></div>
                         Log Out
                     </a>
 

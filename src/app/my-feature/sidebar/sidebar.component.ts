@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,10 +13,19 @@ export class SidebarComponent {
   isUserOwner: boolean = false;
   isUserGuest: boolean = false
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private renderer: Renderer2) { }
   ngOnInit(): void {
-  
+
+    const isToggled = localStorage.getItem('sb|sidebar-toggle') === 'true';
+    if (isToggled) {
+      this.renderer.addClass(document.body, 'sb-sidenav-toggled');
+    }
     this.CHeckuserrole()
+  }
+   toggleSidebar(event: Event): void {
+    event.preventDefault();
+    const toggled = document.body.classList.toggle('sb-sidenav-toggled');
+    localStorage.setItem('sb|sidebar-toggle', String(toggled));
   }
 
 

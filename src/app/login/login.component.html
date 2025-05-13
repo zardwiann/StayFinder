@@ -1,57 +1,69 @@
-<section class="vh-100"
-    style="background: url('https://images.pexels.com/photos/1546166/pexels-photo-1546166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');background-size: cover;">
+<section class="vh-100">
     <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col col-xl-10">
-                <div class="card" style="border-radius: 1rem;">
+        <div class="row d-flex justify-content-center align-items-center h-100 ">
+            <div class="col col-xl-9">
+                <div class="card card-login shadow-lg" style="border-radius: 1rem;">
+                    <img src="../../assets/img/logo.png" alt="" class="img-fluid" width="80px" height="80px">
                     <div class="row g-0">
-                        <div class="col-md-6 col-lg-5 d-none d-md-block text-center">
-                            <img src="https://images.pexels.com/photos/804269/pexels-photo-804269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
-                        </div>
-                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                            <div class="card-body p-4 p-lg-5 text-black">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block  ">
+                            <div class="card-body    text-black">
+                                <h1 class="text-center fw-bold" style="letter-spacing: 1px;">Welcome Back</h1>
+                                <p class="text-center" style="letter-spacing: 1px;">Enter your email and password to
+                                    access your account</p>
                                 <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off">
-
-                                    <div class="d-flex justify-content-center">
-                                        <img src="../../assets/img/logo.png" alt="" class="img-fluid" width="200px" height="200px">
-                                    </div>
-
-                                    <h5 class="fw-normal  " style="letter-spacing: 1px;">Sign into your account
-                                    </h5>
+                                    <label for="" class="mb-1">Email</label>
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="email" id="form2Example17" class="form-control form-control-lg"
+
+                                        <input type="email" id="form2Example17" class="form-control form-control-"
                                             formControlName="username" placeholder="Enter Email" />
-
                                     </div>
-
-                                    <div class="form-outline mb-4 position-relative">
+                                    <label for="" class="mb-1">Password</label>
+                                    <div class="form-outline mb-2 position-relative">
                                         <input [type]="isPasswordVisible ? 'text' : 'password'" id="passwordField"
-                                            class="form-control form-control-lg pe-5" formControlName="password"
+                                            class="form-control form-control pe-5" formControlName="password"
                                             placeholder="Enter Password" />
-
                                         <span class="position-absolute top-50 mb-2 end-0 translate-middle-y me-3"
                                             (click)="togglePasswordVisibility()" style="cursor: pointer;">
                                             <i [ngClass]="isPasswordVisible ? 'fas fa-eye' : 'fas fa-eye-slash'"
                                                 class="fs-5"></i>
                                         </span>
                                     </div>
-
-
-
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Remember Password
+                                        </label>
+                                    </div>
                                     <div class="pt-1 mb-4">
                                         <button data-mdb-button-init data-mdb-ripple-init
-                                            class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                                            class="btn btn btn-block bgbutton col-md-12" type="submit">Login</button>
                                     </div>
-
-
                                     <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a
                                             routerLink="/createaccount" style="color: #393f81;">Register here</a></p>
                                 </form>
 
                             </div>
                         </div>
+
+                        <div class="col-md-6 col-lg- d-none d-md-block text-center  mb-2 bgcolor">
+                            <h1 class="header1 text-nowrap bd-highlight mt-5">
+                                Your
+                            </h1>
+                            <h1 class="header1 text-nowrap bd-highlight mt-5">
+                                Stay Finder
+                            </h1>
+                            <hr class="hr">
+                            <div class=" p-3">
+                                 <p class="paragraph-2 ">
+                                Join StayFinder to explore, compare, and book stays easily. Save your favorite
+                                places, track bookings, and get personalized recommendations—all in one account.
+                                Sign up now and start your journey!
+                            </p> 
+                            </div>
+                           
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
